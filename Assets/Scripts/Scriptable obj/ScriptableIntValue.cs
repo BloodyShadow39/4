@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game {
+namespace Values {
 
     [CreateAssetMenu(fileName = "ScriptableInt", menuName = "ScriptableInt")]
     public class ScriptableIntValue : ScriptableObject {
