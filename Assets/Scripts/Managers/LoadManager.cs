@@ -30,6 +30,10 @@ public class LoadManager : MonoBehaviour
         StartCoroutine(LoadSceneCoroutine("Menu"));
     }
 
+    public void LoadGame() {
+        StartCoroutine(LoadSceneCoroutine("Game"));
+    }
+
     private IEnumerator LoadSceneCoroutine(string name) {
         var asyncOperation = SceneManager.LoadSceneAsync(name);
         while (!asyncOperation.isDone) {
