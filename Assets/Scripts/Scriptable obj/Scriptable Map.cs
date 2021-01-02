@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Values {
 
-    [CreateAssetMenu(fileName = "ScriptableString", menuName = "ScriptableString")]
+    [CreateAssetMenu(fileName = "New Map", menuName = "Scriptable Map")]
     public class ScriptableMap : ScriptableObject {
         [SerializeField]//For testing
         private int width;//Ўирина текущей карты
