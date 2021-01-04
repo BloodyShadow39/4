@@ -8,7 +8,9 @@ namespace Game {
 
         [SerializeField]
         private EventDispatcher _selected;
-/*
+        [SerializeField]
+        private EventListener _select;
+
         private void OnEnable() {
             _select.OnEventHappened+=SetOnWay;
         }
@@ -16,9 +18,9 @@ namespace Game {
         private void OnDisable() {
             _select.OnEventHappened -= SetOnWay;
         }
-*/
+
         private void OnMouseDown() {
-            //InputController.Instance.SetTouch((int)transform.position.x, (int)transform.position.z);
+            InputController.Instance.SetTouch((int)transform.position.x, (int)transform.position.z);
             _selected.Dispatch();
         }
 
