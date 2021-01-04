@@ -18,7 +18,6 @@ namespace Game {
         }
 */
         private void OnMouseDown() {
-            Debug.Log($"{transform.position.x},{transform.position.z}");
             //InputController.Instance.SetTouch((int)transform.position.x, (int)transform.position.z);
             _selected.Dispatch();
         }
