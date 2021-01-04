@@ -12,18 +12,16 @@ public class InputController : MonoBehaviour
 
     public List<Vector2Int> way;
 
-    public List<List<int>> map=new List<List<int>>() {
-        new List<int>() { 999, 999, 999},
-        new List<int>() { 999, 999, 999},
-        new List<int>() { 999, -1, 999},
-        new List<int>() { 999, -1, 999},
-    };
+    public List<List<int>> map;
 
     [SerializeField]
     private ScriptableMap _map;
 
     [SerializeField]
     private EventListener _selected;
+
+    [SerializeField]
+    private EventDispatcher _select;
 
     [SerializeField]
     private GameObject _hero;
@@ -33,12 +31,9 @@ public class InputController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        _map.ReadMap();
+        map = _map.map;
         Instance = this;
-        /*if (_map.map.Count < 1)
-            for (int i = 0; i < 5; i++)
-                _map.map.Add(new List<int>() { 999, 999, 999, 999 });
-        map =_map.map;*/
     }
 
     private void OnEnable() {
@@ -54,21 +49,17 @@ public class InputController : MonoBehaviour
     }
 
     public void SetWay() {
-        int a = 3;//(int)_hero.transform.position.x;
-        int b = 2;//(int)_hero.transform.position.z;
-        int c = 3;//_currentTouch.x;
-        int d = 0;// _currentTouch.y;
+        int a = (int)_hero.transform.position.x;
+        int b = (int)_hero.transform.position.z;
+        int c = _currentTouch.x;
+        int d = _currentTouch.y;
 
         map = matrixMove(a, b, map);
-        List<Vector2Int> way = findWay(c, d, map);
-        for (int i = 0; i < map.Count; i++)
-            Debug.Log($"{map[i][0]},{map[i][1]},{map[i][2]}");
-        for(int i = 0; i < way.Count; i++) {
-           Debug.Log($"({way[i].x};{way[i].y})->");
-        }
+        way = findWay(c, d, map);
+
+        _select.Dispatch();
     }
 
-    //TODO: »справление ошибки с тек. параметрами
     //»щет пусть по матрице от точки b,c
     #region FindWay
     private List<Vector2Int> findWay(int b, int c, List<List<int>> map) {
@@ -82,11 +73,12 @@ public class InputController : MonoBehaviour
         List<Vector2Int> currentway=way;
         currentway.Add(new Vector2Int(b, c));
         Debug.Log($"{b},{c}");
+        if (map[b][c] == 0)
+            return currentway;
         if (b - 1 >= 0) {
             if(c - 1 >= 0){
                 if ((map[b - 1][c - 1] < map[b][c])&&(map[b - 1][c - 1]>=0)) {
                     currentway= findWayIterate(b - 1, c - 1, map, currentway);
-                    if (map[currentway[currentway.Count-1].x][currentway[currentway.Count-1].y] == 0)
                         return currentway;
                 }
             }
@@ -94,14 +86,12 @@ public class InputController : MonoBehaviour
             if (c + 1 < map[b-1].Count) {
                 if ((map[b - 1][c + 1] < map[b][c])&& (map[b - 1][c + 1] >= 0)) {
                     currentway = findWayIterate(b - 1, c + 1, map, currentway);
-                    if (map[currentway[currentway.Count-1].x][currentway[currentway.Count-1].y] == 0)
                         return currentway;
                 }
             }
 
             if ((map[b - 1][c] < map[b][c])&& (map[b - 1][c] >= 0)) {
                 currentway = findWayIterate(b - 1, c, map, currentway);
-                if (map[currentway[currentway.Count-1].x][currentway[currentway.Count-1].y] == 0)
                     return currentway;
             }
 
@@ -112,7 +102,6 @@ public class InputController : MonoBehaviour
             if (c - 1 >= 0) {
                 if ((map[b + 1][c - 1] < map[b][c])&& (map[b + 1][c - 1] >= 0)) {
                     currentway = findWayIterate(b + 1, c - 1, map, currentway);
-                    if (map[currentway[currentway.Count-1].x][currentway[currentway.Count-1].y] == 0)
                         return currentway;
                 }
             }
@@ -120,14 +109,12 @@ public class InputController : MonoBehaviour
             if (c + 1 < map[b].Count) {
                 if ((map[b + 1][c + 1] < map[b][c])&& (map[b + 1][c + 1] >= 0)) {
                     currentway = findWayIterate(b + 1, c + 1, map, currentway);
-                    if (map[currentway[currentway.Count-1].x][currentway[currentway.Count-1].y] == 0)
-                        return currentway;
+                            return currentway;
                 }
             }
 
             if ((map[b + 1][c] < map[b][c])&& (map[b + 1][c] >= 0)) {
                 currentway = findWayIterate(b + 1, c, map, currentway);
-                if (map[currentway[currentway.Count].x][currentway[currentway.Count].y] == 0)
                     return currentway;
             }
 
@@ -136,7 +123,6 @@ public class InputController : MonoBehaviour
         if (c - 1 >= 0) {
             if ((map[b][c - 1] < map[b][c]) && (map[b][c - 1] >= 0)) {
                 currentway = findWayIterate(b, c - 1, map, currentway);
-                if (map[currentway[currentway.Count-1].x][currentway[currentway.Count-1].y] == 0)
                     return currentway;
             }
         }
@@ -144,11 +130,9 @@ public class InputController : MonoBehaviour
         if (c + 1 < map[b].Count) {
             if ((map[b][c + 1] < map[b][c])&& (map[b][c - 1] >= 0)) {
                 currentway = findWayIterate(b, c + 1, map, currentway);
-                if (map[currentway[currentway.Count-1].x][currentway[currentway.Count-1].y] == 0)
                     return currentway;
             }
         }
-
         return currentway;
     }
     #endregion FindWay
