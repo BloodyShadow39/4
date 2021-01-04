@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2383974439174820799}
   - component: {fileID: 6208372241637404891}
   - component: {fileID: -1289757378957581256}
+  - component: {fileID: -8251567437080945100}
   m_Layer: 0
   m_Name: Touch
   m_TagString: Untagged
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selected: {fileID: -1289757378957581256}
+  _select: {fileID: -8251567437080945100}
 --- !u!114 &-1289757378957581256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,3 +125,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _someEvent: {fileID: 11400000, guid: 60d56febbf074204482e0261e14b4d6d, type: 2}
+--- !u!114 &-8251567437080945100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164868766499008435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c9accab0aab458a8b115beb6ae68e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _someEvent: {fileID: 11400000, guid: 2937265fb56c8e040b6163f2e36abfdf, type: 2}
