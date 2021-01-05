@@ -46,8 +46,20 @@ namespace Values {
                     tmp = 0;
                 }
         }
+
         map.RemoveAt(map.Count - 1);
+        
+            /*Debug.Log(map);
+        List<List<int>> mapTransponitive=map;
+        for(int i=0;i<map.Count;i++){
+            for(int j=0;j<map.Count;j++){
+             mapTransponitive[i][j]=map[i][map.Count-j-1];   
+            }
         }
+        map=mapTransponitive;
+        Debug.Log(map);*/
+        }
+        
 
         
     }
