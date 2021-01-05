@@ -16,9 +16,10 @@ namespace Game{
         private GameObject _let;
 
         private void Start(){
-            if(_loadMap.map.Count==0)
-                _loadMap.ReadMap();
-            GenerateMap();
+            //if(_loadMap.map.Count==0)
+            //    _loadMap.ReadMap();
+            //GenerateMap();
+            FormirateMap();
         }
         private void GenerateMap(){
             for(int i=0;i<_loadMap.map.Count;i++){
@@ -35,6 +36,32 @@ namespace Game{
             }
         }
 
+        private void FormirateMap(){
+            int maxy=0;
+            int maxx=0;
+            foreach(Transform child in transform){
+                if(child.position.x>maxx){
+                    maxx=(int)child.position.x;
+                }
+                if(child.position.z>maxy){
+                    maxy=(int)child.position.z;
+                }
+            }
+            _loadMap.map.Clear();
+            for(int i=0;i<maxx;i++){
+                _loadMap.map.Add(new List<int>());
+                for(int j=0;j<maxy;j++){
+                    _loadMap.map[i].Add(int.MaxValue);
+                }
+            }
+            foreach(Transform child in transform){
+                if(!child.gameObject.TryGetComponent(out Toucher touch)){
+                    if(((int)child.position.x>=0)&&((int)child.position.z>=0))
+                        _loadMap.map[(int)child.position.x][(int)child.position.z]=-1;
+                }
+            }
+            _loadMap.RewriteMap();
+        }
 
     }
 }

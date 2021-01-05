@@ -13,7 +13,10 @@ namespace Values {
 
         public TextAsset text;
 
+        private string filepath;
+
         public void ReadMap() {
+
             string data=text.text;
             int tmp = 0;
             bool isNegative = false;
@@ -58,6 +61,23 @@ namespace Values {
         }
         map=mapTransponitive;
         Debug.Log(map);*/
+        }
+
+        public void RewriteMap(){
+            filepath="Assets/Resourses/"+text.name+".txt";
+            Debug.Log(filepath);
+            string newMap="";
+            for(int i=0;i<map.Count;i++){
+                for(int j=0;j<map[i].Count;j++){
+                    if(newMap=="")
+                    newMap=newMap+map[i][j].ToString();
+                    else
+                    newMap=newMap+" "+map[i][j].ToString();
+                }
+                newMap=newMap+";";
+            }
+            StreamWriter sw=new StreamWriter(filepath);
+            sw.Write(newMap);
         }
         
 

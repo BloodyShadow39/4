@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0b2a7f8a964c14791d0edd0a402d20, type: 3}
   m_Name: ScriptableMap
   m_EditorClassIdentifier: 
+  text: {fileID: 4900000, guid: fd3fe973817c96743879d457bcd3acba, type: 3}
