@@ -6,6 +6,8 @@ using Values;
 namespace Game{
     public class MapCreator : MonoBehaviour
     {
+        public static MapCreator Instance;
+
         [SerializeField]
         private ScriptableMap _loadMap;
 
@@ -15,13 +17,25 @@ namespace Game{
         [SerializeField]
         private GameObject _let;
 
-        private void Start(){
-            //if(_loadMap.map.Count==0)
-            //    _loadMap.ReadMap();
-            //GenerateMap();
-            FormirateMap();
+        private void Awake() {
+
+                if (Instance != null) {
+                    Destroy(Instance);
+                }
+
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+
         }
-        private void GenerateMap(){
+
+        private void Start(){
+            if(_loadMap.map.Count==0)
+                _loadMap.ReadMap();
+
+            GenerateMap();
+            //FormirateMap();
+        }
+        public void GenerateMap(){
             for(int i=0;i<_loadMap.map.Count;i++){
                 for(int j=0;j<_loadMap.map[i].Count;j++){
                     if(_loadMap.map[i][j]>=0){
@@ -36,7 +50,7 @@ namespace Game{
             }
         }
 
-        private void FormirateMap(){
+        public void FormirateMap(){
             int maxy=0;
             int maxx=0;
             foreach(Transform child in transform){
