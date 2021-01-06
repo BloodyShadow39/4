@@ -30,8 +30,9 @@ public class LoadManager : MonoBehaviour
         StartCoroutine(LoadSceneCoroutine("Menu"));
     }
 
-    public void LoadGame() {
-        StartCoroutine(LoadSceneCoroutine("Game"));
+    public void Load(string name) {
+        //TODO: animation for load
+        StartCoroutine(LoadSceneCoroutine(name));
     }
 
     private IEnumerator LoadSceneCoroutine(string name) {
