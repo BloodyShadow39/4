@@ -13,6 +13,8 @@ namespace Values {
 
         public TextAsset text;
 
+        public static string nameOfGame = "4";
+
         private string filepath;
 
         public void ReadMap() {
@@ -64,20 +66,22 @@ namespace Values {
         }
 
         public void RewriteMap(){
-            filepath="Assets/Resourses/"+text.name+".txt";
-            Debug.Log(filepath);
+            filepath= @"../" + nameOfGame + "/Assets/Resourses/"+ text.name+".txt";
             string newMap="";
+            bool isNewLine = true;
             for(int i=0;i<map.Count;i++){
-                for(int j=0;j<map[i].Count;j++){
-                    if(newMap=="")
-                    newMap=newMap+map[i][j].ToString();
+                isNewLine = true;
+                for (int j=0;j<map[i].Count;j++){
+                    if (isNewLine) {
+                         newMap = newMap + map[i][j].ToString();
+                        isNewLine = false;
+                    }
                     else
-                    newMap=newMap+" "+map[i][j].ToString();
+                        newMap = newMap + " " + map[i][j].ToString();
                 }
                 newMap=newMap+";";
             }
-            StreamWriter sw=new StreamWriter(filepath);
-            sw.Write(newMap);
+            File.WriteAllText(filepath,newMap);
         }
         
 
