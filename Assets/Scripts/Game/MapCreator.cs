@@ -49,6 +49,9 @@ namespace Game{
         public void FormirateMap(){
             int maxy=0;
             int maxx=0;
+
+            List<List<int>> map=new List<List<int>>();
+
             foreach(Transform child in transform){
                 if(child.position.x>maxx){
                     maxx=(int)child.position.x;
@@ -57,11 +60,10 @@ namespace Game{
                     maxy=(int)child.position.z;
                 }
             }
-            _loadMap.map.Clear();
             for(int i=0;i<maxx+1;i++){
-                _loadMap.map.Add(new List<int>());
+                map.Add(new List<int>());
                 for(int j=0;j<maxy+1;j++){
-                    _loadMap.map[i].Add(int.MaxValue);
+                    map[i].Add(int.MaxValue);
                 }
             }
             foreach(Transform child in transform){
@@ -69,11 +71,13 @@ namespace Game{
                     Debug.Log($"{_loadMap.map.Count} - {(int)child.position.z}; ");
                     if (((int)child.position.x >= 0) && ((int)child.position.z >= 0)) {
                         Debug.Log($"{_loadMap.map.Count} - {(int)child.position.z}; ") ;
-                        _loadMap.map[(int)child.position.x][(int)child.position.z] = -1;
+                        map[(int)child.position.x][(int)child.position.z] = -1;
                     }
                 }
             }
-            _loadMap.RewriteMap();
+
+
+            _loadMap.RewriteMap(map);
         }
 
     }
