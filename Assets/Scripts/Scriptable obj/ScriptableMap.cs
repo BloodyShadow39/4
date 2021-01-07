@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.IO;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Values {
     [CreateAssetMenu(fileName = "ScriptableMap")]
@@ -72,7 +71,12 @@ namespace Values {
         }
 
         public void ReadMap() {
-            string data = text.text;
+            if (text == null) {
+                Debug.LogError("Map does not created, use MapCreator for formirate new map");
+                return;
+            }
+            Resources.Load(filepath);
+            string data = Resources.Load<TextAsset>(filepath).text;
             map.Add(new List<int>());
 
             for (int i = 0; i < data.Length; i++) {
@@ -91,7 +95,11 @@ namespace Values {
         }
 
         public void RewriteMap(){
-            filepath = @"../" + nameOfGame + "/Assets/Resourses/Maps/"+ text.name+".txt";
+            if (text == null) {
+                filepath = "Maps/" + SceneManager.GetActiveScene().name + ".txt";
+            }
+            else
+                filepath = "Maps/"+ text.name+".txt";
             string newMap="";
             bool isNewLine;
             for(int i=0;i<map.Count;i++){
@@ -117,7 +125,7 @@ namespace Values {
                 }
                 newMap=newMap+";";
             }
-            File.WriteAllText(filepath,newMap);
+            File.WriteAllText(@"../"+nameOfGame +"/Assets/Resouces/"+ filepath, newMap);
         }
 
         #region MatrixMove
