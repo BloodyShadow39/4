@@ -58,9 +58,9 @@ namespace Game{
                 }
             }
             _loadMap.map.Clear();
-            for(int i=0;i<maxy+1;i++){
+            for(int i=0;i<maxx+1;i++){
                 _loadMap.map.Add(new List<int>());
-                for(int j=0;j<maxx+1;j++){
+                for(int j=0;j<maxy+1;j++){
                     _loadMap.map[i].Add(int.MaxValue);
                 }
             }
@@ -69,7 +69,7 @@ namespace Game{
                     Debug.Log($"{_loadMap.map.Count} - {(int)child.position.z}; ");
                     if (((int)child.position.x >= 0) && ((int)child.position.z >= 0)) {
                         Debug.Log($"{_loadMap.map.Count} - {(int)child.position.z}; ") ;
-                        _loadMap.map[(int)child.position.z][(int)child.position.x] = -1;
+                        _loadMap.map[(int)child.position.x][(int)child.position.z] = -1;
                     }
                 }
             }
