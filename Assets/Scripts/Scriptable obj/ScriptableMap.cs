@@ -66,7 +66,7 @@ namespace Values {
         }
 
         public void RewriteMap(){
-            filepath= @"../" + nameOfGame + "/Assets/Resourses/"+ text.name+".txt";
+            filepath= @"../" + nameOfGame + "/Assets/Resourses/Maps/"+ text.name+".txt";
             string newMap="";
             bool isNewLine = true;
             for(int i=0;i<map.Count;i++){
