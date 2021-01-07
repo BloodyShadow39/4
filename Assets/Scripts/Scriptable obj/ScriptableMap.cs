@@ -18,11 +18,11 @@ namespace Values {
         [SerializeField]
         private char close = 'C';
 
-        private string filepath;
-
         public void ReadMap() {
-            Resources.Load(filepath);
-            string data = Resources.Load<TextAsset>(filepath).text;
+            string filepath = "Maps/" + SceneManager.GetActiveScene().name;
+            TextAsset textAsset = Resources.Load(filepath) as TextAsset;
+            Debug.Log(filepath);
+            string data = textAsset.text;
             map.Add(new List<int>());
 
             for (int i = 0; i < data.Length; i++) {
@@ -43,7 +43,7 @@ namespace Values {
         #region Rewrite
 
         public void RewriteMap(){
-                filepath = "Maps/" + SceneManager.GetActiveScene().name + ".txt";
+            string filepath = "Maps/" + SceneManager.GetActiveScene().name + ".txt";
             map.Clear();
             string newMap="";
             bool isNewLine;
@@ -72,7 +72,7 @@ namespace Values {
         }
 
         public void RewriteMap(List<List<int>> tmap) {
-            filepath = "Maps/" + SceneManager.GetActiveScene().name + ".txt";
+            string filepath = "Maps/" + SceneManager.GetActiveScene().name + ".txt";
             map.Clear();
             map = tmap;
             string newMap = "";
