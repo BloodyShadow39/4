@@ -23,25 +23,27 @@ namespace Game {
         }
 
         private void OnMouseDown() {
-            _hero.SelectHero.SetTouch(this);
+            if(_hero!=null)
+                _hero.SelectHero.SetTouch(this);
             _selected.Dispatch();
         }
 
         private void SetOnWay() {
-            bool tmp = false;
-            for (int i = 0; i < _hero.SelectHero.way.Count; i++) {
-                if ((_hero.SelectHero.way[i].x == (int)transform.position.x) && (_hero.SelectHero.way[i].y == (int)transform.position.z)) {
-                    tmp = true;
-                    break;
+            if (_hero != null) {
+                bool tmp = false;
+                for (int i = 0; i < _hero.SelectHero.way.Count; i++) {
+                    if ((_hero.SelectHero.way[i].x == (int)transform.position.x) && (_hero.SelectHero.way[i].y == (int)transform.position.z)) {
+                        tmp = true;
+                        break;
+                    }
                 }
+                if (tmp)
+                    if (transform.position.y < -0.01f)
+                        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+                    else
+                    if (transform.position.y > -0.49f)
+                        transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
             }
-            if (tmp) 
-                if(transform.position.y<-0.01f)
-                    transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-            else
-                if (transform.position.y > -0.49f)
-                    transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
         }
-
     }
 }
