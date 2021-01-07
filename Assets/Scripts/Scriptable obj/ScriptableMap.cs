@@ -15,9 +15,15 @@ namespace Values {
 
         public static string nameOfGame = "4";
 
+        [SerializeField]
+        private char empty = 'E';
+
+        [SerializeField]
+        private char close = 'C';
+
         private string filepath;
 
-        public void ReadMap() {
+        public void ReadMap2() {
 
             string data=text.text;
             int tmp = 0;
@@ -64,7 +70,26 @@ namespace Values {
         map=mapTransponitive;
         Debug.Log(map);*/
         }
-        
+
+        public void ReadMap() {
+            string data = text.text;
+            map.Add(new List<int>());
+
+            for (int i = 0; i < data.Length; i++) {
+                if (data[i]== empty)  {
+                    map[map.Count - 1].Add(int.MaxValue);
+                }
+                if (data[i] == close) {
+                    map[map.Count - 1].Add(-1);
+                }
+                if (data[i] == ';') {
+                map.Add(new List<int>());
+                }
+            }
+            map.RemoveAt(map.Count - 1);
+
+        }
+
         public void RewriteMap(){
             filepath = @"../" + nameOfGame + "/Assets/Resourses/Maps/"+ text.name+".txt";
             string newMap="";
@@ -73,11 +98,22 @@ namespace Values {
                 isNewLine = true;
                 for (int j=0;j<map[i].Count;j++){
                     if (isNewLine) {
-                         newMap = newMap + map[i][j].ToString();
+                        if (map[i][j] >= 0) {
+                            newMap = newMap + empty;
+                        }
+                        else
+                            newMap = newMap + close;
+                        //newMap = newMap + map[i][j].ToString();
                         isNewLine = false;
                     }
-                    else
-                        newMap = newMap + " " + map[i][j].ToString();
+                    else {
+                        if (map[i][j] >= 0) {
+                            newMap = newMap  + empty;
+                        }
+                        else
+                            newMap = newMap  + close;
+                        //newMap = newMap + " " + map[i][j].ToString();
+                    }
                 }
                 newMap=newMap+";";
             }
