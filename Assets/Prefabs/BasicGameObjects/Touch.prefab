@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selected: {fileID: -1289757378957581256}
   _select: {fileID: -8251567437080945100}
+  _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
 --- !u!114 &-1289757378957581256
 MonoBehaviour:
   m_ObjectHideFlags: 0
