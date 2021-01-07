@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Events;
+using Values;
 
 namespace Game {
     public class Toucher : MonoBehaviour {
@@ -10,6 +11,8 @@ namespace Game {
         private EventDispatcher _selected;
         [SerializeField]
         private EventListener _select;
+        [SerializeField]
+        private ScriptablePickHero _hero;
 
         private void OnEnable() {
             _select.OnEventHappened+=SetOnWay;
@@ -20,14 +23,14 @@ namespace Game {
         }
 
         private void OnMouseDown() {
-            InputController.Instance.SetTouch((int)transform.position.x, (int)transform.position.z);
+            _hero.SelectHero.SetTouch(this);
             _selected.Dispatch();
         }
 
         private void SetOnWay() {
             bool tmp = false;
-            for (int i = 0; i < InputController.Instance.way.Count; i++) {
-                if ((InputController.Instance.way[i].x == (int)transform.position.x) && (InputController.Instance.way[i].y == (int)transform.position.z)) {
+            for (int i = 0; i < _hero.SelectHero.way.Count; i++) {
+                if ((_hero.SelectHero.way[i].x == (int)transform.position.x) && (_hero.SelectHero.way[i].y == (int)transform.position.z)) {
                     tmp = true;
                     break;
                 }
