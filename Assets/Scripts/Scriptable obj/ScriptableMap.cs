@@ -10,8 +10,6 @@ namespace Values {
 
         public List<List<int>> map=new List<List<int>>();
 
-        public TextAsset text;
-
         public static string nameOfGame = "4";
 
         [SerializeField]
@@ -22,59 +20,7 @@ namespace Values {
 
         private string filepath;
 
-        public void ReadMap2() {
-
-            string data=text.text;
-            int tmp = 0;
-            bool isNegative = false;
-            map.Add(new List<int>());
-            for (int i = 0; i < data.Length; i++) {
-                if ((data[i] == '0') || (data[i] == '1') || (data[i] == '2') || (data[i] == '3') || (data[i] == '4') || (data[i] == '5') || (data[i] == '6') || (data[i] == '7') || (data[i] == '8') || (data[i] == '9') || (data[i] == '-')) {
-                    if (data[i] == '-') {
-                        isNegative = true;
-                    }
-                    else
-                    tmp = tmp * 10 + (int)Char.GetNumericValue(data[i]);
-                }
-                else
-                    if (data[i] == ' ') {
-                    if (isNegative) {
-                        tmp = -1 * tmp;
-                        isNegative = false;
-                    }
-                    map[map.Count - 1].Add(tmp);
-                    tmp = 0;
-                }
-                else
-                    if (data[i] == ';') {
-                    if (isNegative) {
-                        tmp = -1 * tmp;
-                        isNegative = false;
-                    }
-                    map[map.Count - 1].Add(tmp);
-                    map.Add(new List<int>());
-                    tmp = 0;
-                }
-        }
-
-        map.RemoveAt(map.Count - 1);
-        
-            /*Debug.Log(map);
-        List<List<int>> mapTransponitive=map;
-        for(int i=0;i<map.Count;i++){
-            for(int j=0;j<map.Count;j++){
-             mapTransponitive[i][j]=map[i][map.Count-j-1];   
-            }
-        }
-        map=mapTransponitive;
-        Debug.Log(map);*/
-        }
-
         public void ReadMap() {
-            if (text == null) {
-                Debug.LogError("Map does not created, use MapCreator for formirate new map");
-                return;
-            }
             Resources.Load(filepath);
             string data = Resources.Load<TextAsset>(filepath).text;
             map.Add(new List<int>());
@@ -94,12 +40,11 @@ namespace Values {
 
         }
 
+        #region Rewrite
+
         public void RewriteMap(){
-            if (text == null) {
                 filepath = "Maps/" + SceneManager.GetActiveScene().name + ".txt";
-            }
-            else
-                filepath = "Maps/"+ text.name+".txt";
+            map.Clear();
             string newMap="";
             bool isNewLine;
             for(int i=0;i<map.Count;i++){
@@ -111,7 +56,6 @@ namespace Values {
                         }
                         else
                             newMap = newMap + close;
-                        //newMap = newMap + map[i][j].ToString();
                         isNewLine = false;
                     }
                     else {
@@ -120,13 +64,44 @@ namespace Values {
                         }
                         else
                             newMap = newMap  + close;
-                        //newMap = newMap + " " + map[i][j].ToString();
                     }
                 }
                 newMap=newMap+";";
             }
             File.WriteAllText(@"../"+nameOfGame +"/Assets/Resouces/"+ filepath, newMap);
         }
+
+        public void RewriteMap(List<List<int>> tmap) {
+            filepath = "Maps/" + SceneManager.GetActiveScene().name + ".txt";
+            map.Clear();
+            map = tmap;
+            string newMap = "";
+            bool isNewLine;
+            for (int i = 0; i < map.Count; i++) {
+                isNewLine = true;
+                for (int j = 0; j < map[i].Count; j++) {
+                    if (isNewLine) {
+                        if (map[i][j] >= 0) {
+                            newMap = newMap + empty;
+                        }
+                        else
+                            newMap = newMap + close;
+                        isNewLine = false;
+                    }
+                    else {
+                        if (map[i][j] >= 0) {
+                            newMap = newMap + empty;
+                        }
+                        else
+                            newMap = newMap + close;
+                    }
+                }
+                newMap = newMap + ";";
+            }
+            File.WriteAllText(@"../" + nameOfGame + "/Assets/Resources/" + filepath, newMap);
+        }
+
+        #endregion Rewrite
 
         #region MatrixMove
 
