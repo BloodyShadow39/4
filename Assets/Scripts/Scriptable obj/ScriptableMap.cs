@@ -83,8 +83,78 @@ namespace Values {
             }
             File.WriteAllText(filepath,newMap);
         }
-        
 
-        
+        #region MatrixMove
+
+        public List<List<int>> matrixMove(int a, int b) {
+            List<List<int>> currentMap = map;
+            currentMap[a][b] = 0;
+            currentMap = matrixMoveIterate(a, b, currentMap);
+            return currentMap;
+        }
+
+        public List<List<int>> matrixMove(int a, int b, List<List<int>> map) {
+            map[a][b] = 0;
+            map = matrixMoveIterate(a, b, map);
+            return map;
+        }
+
+        private List<List<int>> matrixMoveIterate(int a, int b, List<List<int>> map) {
+            if (a - 1 >= 0) {
+                if (b - 1 >= 0) {
+                    if (map[a - 1][b - 1] > map[a][b]) {
+                        map[a - 1][b - 1] = map[a][b] + 1;
+                        matrixMoveIterate(a - 1, b - 1, map);
+                    }
+                }
+                if (b + 1 < map[a - 1].Count) {
+                    if (map[a - 1][b + 1] > map[a][b]) {
+                        map[a - 1][b + 1] = map[a][b] + 1;
+                        matrixMoveIterate(a - 1, b + 1, map);
+                    }
+                }
+                if (map[a - 1][b] > map[a][b]) {
+                    map[a - 1][b] = map[a][b] + 1;
+                    matrixMoveIterate(a - 1, b, map);
+                }
+            }
+
+            if (a + 1 < map.Count) {
+                if (b + 1 < map[a + 1].Count) {
+                    if (map[a + 1][b + 1] > map[a][b]) {
+                        map[a + 1][b + 1] = map[a][b] + 1;
+                        matrixMoveIterate(a + 1, b + 1, map);
+                    }
+                }
+                if (b - 1 >= 0) {
+                    if (map[a + 1][b - 1] > map[a][b]) {
+                        map[a + 1][b - 1] = map[a][b] + 1;
+                        matrixMoveIterate(a + 1, b - 1, map);
+                    }
+                }
+                if (map[a + 1][b] > map[a][b]) {
+                    map[a + 1][b] = map[a][b] + 1;
+                    matrixMoveIterate(a + 1, b, map);
+                }
+            }
+
+            if (b - 1 >= 0) {
+                if (map[a][b - 1] > map[a][b]) {
+                    map[a][b - 1] = map[a][b] + 1;
+                    matrixMoveIterate(a, b - 1, map);
+                }
+            }
+
+            if (b + 1 < map[a].Count) {
+                if (map[a][b + 1] > map[a][b]) {
+                    map[a][b + 1] = map[a][b] + 1;
+                    matrixMoveIterate(a, b + 1, map);
+                }
+            }
+            return map;
+        }
+
+        #endregion MatrixMove
+
     }
 }
