@@ -14,6 +14,7 @@ namespace Editors {
             _thisMap = (MapCreator)target;
             if (GUILayout.Button("Formirate Map")) {
                 _thisMap.FormirateMap();
+                AssetDatabase.Refresh();
             }
         }
     }
