@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Values;
+using Events;
 
 namespace Game {
     public class Hero : MonoBehaviour {
@@ -28,6 +29,9 @@ namespace Game {
         /// </summary>
         public float time =5;
 
+        [SerializeField]
+        private EventDispatcher _wayDefenited;
+
         private bool _moveLock = false;
 
         [SerializeField]
@@ -51,7 +55,7 @@ namespace Game {
         /// Перемещает обьект по текущему пути
         /// </summary>
         public void MoveAllWay() {
-            _moveLock = true;
+            if(!_moveLock)
                 StartCoroutine(MoveCoroutineAllWay());
         }
         /// <summary>
@@ -59,11 +63,12 @@ namespace Game {
         /// </summary>
         /// <returns>Корутина</returns>
         private IEnumerator MoveCoroutineAllWay() {
+            _moveLock = true;
             for (int i = 0; i < way.Count; i++) {
                 StartCoroutine(MoveCoroutine(time, new Vector3(way[i].x,transform.position.y,way[i].y)));
                 yield return new WaitForSeconds(time);
-                _moveLock = false;
             }
+            _moveLock = false;
         }
         /// <summary>
         /// Покадрового передвигает обьект за время t в новую позицию (Vector3) nextPosition 
@@ -111,6 +116,7 @@ namespace Game {
                     way.Add(invetway[invetway.Count - 1 - i]);
                 }
             }
+            _wayDefenited.Dispatch();
             return way;
         }
 
