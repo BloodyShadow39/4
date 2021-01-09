@@ -6,22 +6,36 @@ using Values;
 
 namespace Game {
     public class Toucher : MonoBehaviour {
-
+        /// <summary>
+        /// Указатель на издаваемое событие
+        /// </summary>
         [SerializeField]
         private EventDispatcher _selected;
+        /// <summary>
+        /// Указатель на слышимое событие
+        /// </summary>
         [SerializeField]
         private EventListener _select;
+        /// <summary>
+        /// Указатель на выбраного героя (ассет)
+        /// </summary>
         [SerializeField]
         private ScriptablePickHero _hero;
-
+        /// <summary>
+        /// Подписывается на события
+        /// </summary>
         private void OnEnable() {
             _select.OnEventHappened+=SetOnWay;
         }
-
+        /// <summary>
+        /// Отписывается от событий
+        /// </summary>
         private void OnDisable() {
             _select.OnEventHappened -= SetOnWay;
         }
-
+        /// <summary>
+        /// Фиксирует нажатие на обьект, двойное нажатие на объект приведет к перемещению текущего героя
+        /// </summary>
         private void OnMouseDown() {
             if (_hero.SelectHero != null) {
                 if (_hero.SelectHero.GetToucher() != this)
@@ -35,7 +49,9 @@ namespace Game {
             }
             _selected.Dispatch();
         }
-
+        /// <summary>
+        /// Устанавливает текущий Тачер в состояние - на пути следования и наоборот убирает его из этого состояния
+        /// </summary>
         public void SetOnWay() {
             if (_hero != null) {
                 bool tmp = false;

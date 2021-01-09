@@ -6,31 +6,47 @@ using Values;
 namespace Game{
     public class MapCreator : MonoBehaviour
     {
+        /// <summary>
+        /// Указатель единсвенности данного объекта
+        /// </summary>
         public static MapCreator Instance;
-
+        /// <summary>
+        /// Ссылка на ассет в котором храниться карта
+        /// </summary>
         [SerializeField]
         private ScriptableMap _loadMap;
-
+        /// <summary>
+        /// Объект указывающий пустую клетку с которой можно взаимодействовать
+        /// </summary>
         [SerializeField]
         private Toucher _touchElement;
-
+        /// <summary>
+        /// Объект указывающий непроходимость клетки
+        /// </summary>
         [SerializeField]
         private GameObject _let;
 
+        /// <summary>
+        /// Определяет себя как главный генератор карты на текущей сцене
+        /// </summary>
         private void Awake() {
                 if (Instance != null) {
                     Destroy(Instance);
                 }
                 Instance = this;
         }
-
+        /// <summary>
+        /// Запускает на момент первого кадра создание карты
+        /// </summary>
         private void Start(){
             if(_loadMap.map.Count==0)
                 _loadMap.ReadMap();
 
             GenerateMap();
-            //FormirateMap();
         }
+        /// <summary>
+        /// Генерирует карту записанную в ассете
+        /// </summary>
         public void GenerateMap(){
             bool isCreated;
             for (int i=0;i<_loadMap.map.Count;i++){
@@ -55,7 +71,9 @@ namespace Game{
                 }
             }
         }
-
+        /// <summary>
+        /// Записывает текущую карту в ассет
+        /// </summary>
         public void FormirateMap(){
             int maxy=0;
             int maxx=0;
