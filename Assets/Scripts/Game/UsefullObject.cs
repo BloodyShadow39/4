@@ -14,6 +14,8 @@ public class UsefullObject : MonoBehaviour
 
     [SerializeField]
     private string _type="";
+    [SerializeField]
+    private int value;
 
     private void OnMouseDown(){
         if (_selectedHero.SelectHero != null) {
@@ -142,7 +144,7 @@ public class UsefullObject : MonoBehaviour
 
     private void Use(){
         if(_type=="Gold"||_type=="gold"){
-            
+            _selectedHero.SelectHero.player.gold+=value;
         }
     }
 }

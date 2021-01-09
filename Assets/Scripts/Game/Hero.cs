@@ -10,6 +10,8 @@ namespace Game {
         /// ����� ������������� ���� �����������
         /// </summary>
         private Vector2Int _target;
+
+        public ScriptablePlayer player;
         /// <summary>
         /// ���������� ������� Toucher
         /// </summary>
