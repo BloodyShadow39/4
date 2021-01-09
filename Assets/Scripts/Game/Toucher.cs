@@ -23,12 +23,20 @@ namespace Game {
         }
 
         private void OnMouseDown() {
-            if(_hero!=null)
-                _hero.SelectHero.SetTouch(this);
+            if (_hero.SelectHero != null) {
+                if (_hero.SelectHero.GetToucher() != this)
+                    _hero.SelectHero.SetTouch(this);
+                else
+                    _hero.SelectHero.MoveAllWay();
+                
+            }
+            else {
+                Debug.LogError("Hero not pick");
+            }
             _selected.Dispatch();
         }
 
-        private void SetOnWay() {
+        public void SetOnWay() {
             if (_hero != null) {
                 bool tmp = false;
                 for (int i = 0; i < _hero.SelectHero.way.Count; i++) {
