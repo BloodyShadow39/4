@@ -18,6 +18,10 @@ namespace Game {
         /// Текущий путь до точки
         /// </summary>
         public List<Vector2Int> way;
+        /// <summary>
+        /// Время необходимое для прохождения 1ой клетки
+        /// </summary>
+        public float time =1;
 
         /// <summary>
         /// Устатнавливает точку указатель перемещения
@@ -27,6 +31,23 @@ namespace Game {
             _currentTouch = toucher;
         }
 
+        #region Move
+        /// <summary>
+        /// Перемещает обьект по текущему пути
+        /// </summary>
+        public void MoveAllWay() {
+                StartCoroutine(MoveCoroutineAllWay());
+        }
+        /// <summary>
+        /// Корутина для запуска всего перемещения
+        /// </summary>
+        /// <returns>Корутина</returns>
+        private IEnumerator MoveCoroutineAllWay() {
+            for (int i = 0; i < way.Count; i++) {
+                StartCoroutine(MoveCoroutine(time, new Vector3(way[i].x,transform.position.y,way[i].y)));
+                yield return null;
+            }
+        }
         /// <summary>
         /// Покадрового передвигает обьект за время t в новую позицию (Vector3) nextPosition 
         /// </summary>
@@ -49,6 +70,7 @@ namespace Game {
                 yield return null;
             }
         }
+        #endregion Move
 
         /// <summary>
         /// Просчитывает текущий путь на текущей карте
@@ -68,7 +90,7 @@ namespace Game {
         //Ищет пусть по матрице от точки b,c
         #region FindWay
         /// <summary>
-        /// Ищет пусть по матрице от точки b, c по карте map
+        /// Ищет путь по матрице от точки x, y по карте map
         /// </summary>
         /// <param name="x">x координата точки</param>
         /// <param name="y">y координата точки</param>
