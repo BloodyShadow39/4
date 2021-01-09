@@ -13,11 +13,38 @@ namespace Game {
 
         public List<Vector2Int> way;
 
+        /// <summary>
+        /// Устатнавливает точку указатель перемещения
+        /// </summary>
+        /// <param name="toucher">Объект регестрирующий нажатие</param>
         public void SetTouch(Toucher toucher) {
             _currentTouch = toucher;
         }
 
-        public void SetWay() {
+        /// <summary>
+        /// Покадрового передвигает обьект за время t в новую позицию (Vector3) nextPosition 
+        /// </summary>
+        /// <param name="time">Время выполнения, не может быть отрицательным</param>
+        /// <param name="nextPosition">Следующая позиция</param>
+        /// <returns>Корутина</returns>
+        private IEnumerator MoveCoroutine(float time,Vector3 nextPosition) {
+            float moveTime = 0f;
+            Vector3 firstPosition = transform.position;
+            if (time >= 0) {
+                while (moveTime < time) {
+                    transform.position = new Vector3(Mathf.Lerp(firstPosition.x, nextPosition.x, moveTime), transform.position.y, Mathf.Lerp(firstPosition.z, nextPosition.z, moveTime));
+                    moveTime += Time.deltaTime;
+                    yield return null;
+                }
+                transform.position = nextPosition;
+            }
+            else {
+                Debug.LogError("Time to move cannot be negative");
+                yield return null;
+            }
+        }
+
+        public List<Vector2Int> SetWay() {
             int a = (int)transform.position.x;
             int b = (int)transform.position.z;
             int c = (int)_currentTouch.transform.position.x;
@@ -25,6 +52,7 @@ namespace Game {
 
             List<List<int>> map = _map.matrixMove(a, b);
             way = findWay(c, d, map);
+            return way;
         }
 
         //Ищет пусть по матрице от точки b,c
