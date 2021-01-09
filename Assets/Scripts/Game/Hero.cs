@@ -60,7 +60,6 @@ namespace Game {
         /// <returns>Корутина</returns>
         private IEnumerator MoveCoroutineAllWay() {
             for (int i = 0; i < way.Count; i++) {
-                Debug.Log(way[i]);
                 StartCoroutine(MoveCoroutine(time, new Vector3(way[i].x,transform.position.y,way[i].y)));
                 yield return new WaitForSeconds(time);
                 _moveLock = false;
