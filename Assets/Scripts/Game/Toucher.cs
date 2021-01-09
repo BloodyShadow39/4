@@ -10,12 +10,12 @@ namespace Game {
         /// Указатель на издаваемое событие
         /// </summary>
         [SerializeField]
-        private EventDispatcher _selected;
+        private EventDispatcher _pickToucher;
         /// <summary>
         /// Указатель на слышимое событие
         /// </summary>
         [SerializeField]
-        private EventListener _select;
+        private EventListener _way;
         /// <summary>
         /// Указатель на выбраного героя (ассет)
         /// </summary>
@@ -25,13 +25,13 @@ namespace Game {
         /// Подписывается на события
         /// </summary>
         private void OnEnable() {
-            _select.OnEventHappened+=SetOnWay;
+            _way.OnEventHappened+=SetOnWay;
         }
         /// <summary>
         /// Отписывается от событий
         /// </summary>
         private void OnDisable() {
-            _select.OnEventHappened -= SetOnWay;
+            _way.OnEventHappened -= SetOnWay;
         }
         /// <summary>
         /// Фиксирует нажатие на обьект, двойное нажатие на объект приведет к перемещению текущего героя
@@ -42,12 +42,11 @@ namespace Game {
                     _hero.SelectHero.SetTouch(this);
                 else
                     _hero.SelectHero.MoveAllWay();
-                
             }
             else {
                 Debug.LogError("Hero not pick");
             }
-            _selected.Dispatch();
+            _pickToucher.Dispatch();
         }
         /// <summary>
         /// Устанавливает текущий Тачер в состояние - на пути следования и наоборот убирает его из этого состояния

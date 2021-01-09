@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ad9cb771499aa489e68bfcbe12d78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selected: {fileID: -1289757378957581256}
-  _select: {fileID: -8251567437080945100}
+  _pickToucher: {fileID: -1289757378957581256}
+  _way: {fileID: -8251567437080945100}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
 --- !u!114 &-1289757378957581256
 MonoBehaviour:
@@ -138,4 +138,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c9accab0aab458a8b115beb6ae68e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _someEvent: {fileID: 11400000, guid: 2937265fb56c8e040b6163f2e36abfdf, type: 2}
+  _someEvent: {fileID: 11400000, guid: 25b3651e0d256dd4a8240d567f4ca2b2, type: 2}
