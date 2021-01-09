@@ -105,16 +105,23 @@ namespace Values {
         #region MatrixMove
 
         public List<List<int>> matrixMove(int a, int b) {
-            List<List<int>> currentMap = map;
+            List<List<int>> currentMap = new List<List<int>>();
+            for(int i = 0; i < map.Count; i++) {
+                currentMap.Add(new List<int>());
+                for(int j = 0; j < map[i].Count; j++) {
+                    currentMap[i].Add(map[i][j]);
+                }
+            }
             currentMap[a][b] = 0;
             currentMap = matrixMoveIterate(a, b, currentMap);
             return currentMap;
         }
 
         public List<List<int>> matrixMove(int a, int b, List<List<int>> map) {
-            map[a][b] = 0;
-            map = matrixMoveIterate(a, b, map);
-            return map;
+            List<List<int>> currentMap = map;
+            currentMap[a][b] = 0;
+            currentMap = matrixMoveIterate(a, b, map);
+            return currentMap;
         }
 
         private List<List<int>> matrixMoveIterate(int a, int b, List<List<int>> map) {
