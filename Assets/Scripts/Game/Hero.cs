@@ -10,6 +10,11 @@ namespace Game {
         /// </summary>
         private Toucher _currentTouch;
         /// <summary>
+        /// Возвращает текущий Toucher
+        /// </summary>
+        /// <returns>Возвращает текущий Toucher</returns>
+        public Toucher GetToucher() { return _currentTouch; }
+        /// <summary>
         /// Карта перемещения
         /// </summary>
         [SerializeField]
@@ -21,7 +26,16 @@ namespace Game {
         /// <summary>
         /// Время необходимое для прохождения 1ой клетки
         /// </summary>
-        public float time =1;
+        public float time =5;
+
+        private bool _moveLock = false;
+
+        [SerializeField]
+        private ScriptablePickHero _selectHero;
+
+        private void OnMouseDown() {
+            _selectHero.SelectHero = this;
+        }
 
         /// <summary>
         /// Устатнавливает точку указатель перемещения
@@ -29,6 +43,7 @@ namespace Game {
         /// <param name="toucher">Объект регестрирующий нажатие</param>
         public void SetTouch(Toucher toucher) {
             _currentTouch = toucher;
+            SetWay();
         }
 
         #region Move
@@ -36,6 +51,7 @@ namespace Game {
         /// Перемещает обьект по текущему пути
         /// </summary>
         public void MoveAllWay() {
+            _moveLock = true;
                 StartCoroutine(MoveCoroutineAllWay());
         }
         /// <summary>
@@ -44,8 +60,10 @@ namespace Game {
         /// <returns>Корутина</returns>
         private IEnumerator MoveCoroutineAllWay() {
             for (int i = 0; i < way.Count; i++) {
+                Debug.Log(way[i]);
                 StartCoroutine(MoveCoroutine(time, new Vector3(way[i].x,transform.position.y,way[i].y)));
-                yield return null;
+                yield return new WaitForSeconds(time);
+                _moveLock = false;
             }
         }
         /// <summary>
@@ -77,13 +95,23 @@ namespace Game {
         /// </summary>
         /// <returns>Лист точек перемещаения</returns>
         public List<Vector2Int> SetWay() {
-            int a = (int)transform.position.x;
-            int b = (int)transform.position.z;
-            int c = (int)_currentTouch.transform.position.x;
-            int d = (int)_currentTouch.transform.position.z;
+            if (!_moveLock) {
+                int a = (int)transform.position.x;
+                int b = (int)transform.position.z;
+                int c = (int)_currentTouch.transform.position.x;
+                int d = (int)_currentTouch.transform.position.z;
 
-            List<List<int>> map = _map.matrixMove(a, b);
-            way = findWay(c, d, map);
+                List<List<int>> map = _map.matrixMove(a, b);
+                for(int i=0;i<map.Count;i++)
+                    for (int j=0;j<map[i].Count;j++)
+                        Debug.Log($"{i},{j}: {map[i][j]}");
+
+                List<Vector2Int> invetway = findWay(c, d, map);
+                way.Clear();
+                for (int i = 0; i < invetway.Count; i++) {
+                    way.Add(invetway[invetway.Count - 1 - i]);
+                }
+            }
             return way;
         }
 
@@ -117,6 +145,11 @@ namespace Game {
             if (map[x][y] == 0)
                 return currentway;
             if (x - 1 >= 0) {
+                if ((map[x - 1][y] < map[x][y]) && (map[x - 1][y] >= 0)) {
+                    currentway = findWayIterate(x - 1, y, map, currentway);
+                    return currentway;
+                }
+
                 if (y - 1 >= 0) {
                     if ((map[x - 1][y - 1] < map[x][y]) && (map[x - 1][y - 1] >= 0)) {
                         currentway = findWayIterate(x - 1, y - 1, map, currentway);
@@ -130,15 +163,14 @@ namespace Game {
                         return currentway;
                     }
                 }
-
-                if ((map[x - 1][y] < map[x][y]) && (map[x - 1][y] >= 0)) {
-                    currentway = findWayIterate(x - 1, y, map, currentway);
-                    return currentway;
-                }
-
             }
 
             if (x + 1 < map.Count) {
+                if ((map[x + 1][y] < map[x][y]) && (map[x + 1][y] >= 0)) {
+                    currentway = findWayIterate(x + 1, y, map, currentway);
+                    return currentway;
+                }
+
                 if (y - 1 >= 0) {
                     if ((map[x + 1][y - 1] < map[x][y]) && (map[x + 1][y - 1] >= 0)) {
                         currentway = findWayIterate(x + 1, y - 1, map, currentway);
@@ -152,12 +184,6 @@ namespace Game {
                         return currentway;
                     }
                 }
-
-                if ((map[x + 1][y] < map[x][y]) && (map[x + 1][y] >= 0)) {
-                    currentway = findWayIterate(x + 1, y, map, currentway);
-                    return currentway;
-                }
-
             }
 
             if (y - 1 >= 0) {
