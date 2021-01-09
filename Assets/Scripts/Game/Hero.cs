@@ -106,9 +106,6 @@ namespace Game {
                 int d = (int)_currentTouch.transform.position.z;
 
                 List<List<int>> map = _map.matrixMove(a, b);
-                for(int i=0;i<map.Count;i++)
-                    for (int j=0;j<map[i].Count;j++)
-                        Debug.Log($"{i},{j}: {map[i][j]}");
 
                 List<Vector2Int> invetway = findWay(c, d, map);
                 way.Clear();
