@@ -64,9 +64,14 @@ namespace Game {
         /// <returns>Корутина</returns>
         private IEnumerator MoveCoroutineAllWay() {
             _moveLock = true;
-            for (int i = 0; i < way.Count; i++) {
-                StartCoroutine(MoveCoroutine(time, new Vector3(way[i].x,transform.position.y,way[i].y)));
+            /*for (int i = 0; i < way.Count; i++) {
+                StartCoroutine(MoveCoroutine(time, new Vector3(way[0].x,transform.position.y,way[0].y)));
                 yield return new WaitForSeconds(time);
+            }*/
+            while (way.Count > 0) {
+                StartCoroutine(MoveCoroutine(time, new Vector3(way[0].x, transform.position.y, way[0].y)));
+                yield return new WaitForSeconds(time);
+                way.RemoveAt(0);
             }
             _moveLock = false;
         }
@@ -120,7 +125,7 @@ namespace Game {
         //Ищет пусть по матрице от точки b,c
         #region FindWay
         /// <summary>
-        /// Ищет путь по матрице от точки x, y по карте map
+        /// Ищет путь по матрице до точки x, y по карте map
         /// </summary>
         /// <param name="x">x координата точки</param>
         /// <param name="y">y координата точки</param>

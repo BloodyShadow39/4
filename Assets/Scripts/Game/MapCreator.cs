@@ -101,8 +101,6 @@ namespace Game{
                     }
                 }
             }
-
-
             _loadMap.RewriteMap(map);
         }
 
