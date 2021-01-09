@@ -9,12 +9,12 @@ namespace Game {
         /// <summary>
         /// ����� ������������� ���� �����������
         /// </summary>
-        private Toucher _currentTouch;
+        private Vector2Int _target;
         /// <summary>
         /// ���������� ������� Toucher
         /// </summary>
         /// <returns>���������� ������� Toucher</returns>
-        public Toucher GetToucher() { return _currentTouch; }
+        public Vector2Int GetTarget() { return _target; }
         /// <summary>
         /// ����� �����������
         /// </summary>
@@ -46,7 +46,17 @@ namespace Game {
         /// </summary>
         /// <param name="toucher">������ �������������� �������</param>
         public void SetTouch(Toucher toucher) {
-            _currentTouch = toucher;
+            _target = new Vector2Int((int)toucher.transform.position.x,(int)toucher.transform.position.z);
+            SetWay();
+        }
+
+        public void SetTouch(Vector2Int target) {
+            _target = target;
+            SetWay();
+        }
+
+        public void SetTouch(int x, int y) {
+            _target = new Vector2Int(x,y);
             SetWay();
         }
 
@@ -107,8 +117,8 @@ namespace Game {
             if (!_moveLock) {
                 int a = (int)transform.position.x;
                 int b = (int)transform.position.z;
-                int c = (int)_currentTouch.transform.position.x;
-                int d = (int)_currentTouch.transform.position.z;
+                int c = (int)_target.x;
+                int d = (int)_target.y;
 
                 List<List<int>> map = _map.matrixMove(a, b);
 

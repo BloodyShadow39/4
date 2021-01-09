@@ -52,7 +52,6 @@ namespace Game{
             for (int i=0;i<_loadMap.map.Count;i++){
                 for(int j=0;j<_loadMap.map[i].Count;j++){
                     isCreated = false;
-                    Debug.Log($"{_loadMap.mapOfObjects[i][j]};{i};{j}");
                     foreach (Transform child in transform) {
                         if ((child.position.x == i ) && (child.position.z == j) && (_loadMap.mapOfObjects[i][j]!=_loadMap.GetUseful())) {
                             isCreated = true;
