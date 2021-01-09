@@ -37,7 +37,7 @@ namespace Game{
                 for(int j=0;j<_loadMap.map[i].Count;j++){
                     isCreated = false;
                     foreach (Transform child in transform) {
-                        if ((child.position.x == i) && (child.position.z == j)) {
+                        if ((child.position.x == i ) && (child.position.z == j)) {
                             isCreated = true;
                             break;
                         }
@@ -46,11 +46,11 @@ namespace Game{
                         if (_loadMap.map[i][j]>=0){
                         
                             Toucher tmp=Instantiate(_touchElement,gameObject.transform);
-                            tmp.gameObject.transform.position=new Vector3(i,-1,j);
+                            tmp.gameObject.transform.position=new Vector3(i, -1,j);
                         }
                         else{
                             GameObject tmp=Instantiate(_let,gameObject.transform);
-                            tmp.gameObject.transform.position=new Vector3(i,0,j);
+                            tmp.gameObject.transform.position=new Vector3(i, 0,j);
                         }
                 }
             }
@@ -78,10 +78,8 @@ namespace Game{
             }
             foreach(Transform child in transform){
                 if(!child.gameObject.TryGetComponent(out Toucher touch)){
-                    Debug.Log($"{_loadMap.map.Count} - {(int)child.position.z}; ");
-                    if (((int)child.position.x >= 0) && ((int)child.position.z >= 0)) {
-                        Debug.Log($"{_loadMap.map.Count} - {(int)child.position.z}; ") ;
-                        map[(int)child.position.x][(int)child.position.z] = -1;
+                    if (((int)(child.position.x) >= 0) && ((int)(child.position.z) >= 0)) {
+                        map[(int)(child.position.x )][(int)(child.position.z)] = -1;
                     }
                 }
             }

@@ -21,7 +21,6 @@ namespace Values {
         public void ReadMap() {
             string filepath = "Maps/" + SceneManager.GetActiveScene().name;
             TextAsset textAsset = Resources.Load(filepath) as TextAsset;
-            Debug.Log(filepath);
             string data = textAsset.text;
             map.Add(new List<int>());
 
