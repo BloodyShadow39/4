@@ -7,6 +7,6 @@ namespace Values {
     [CreateAssetMenu(fileName = "PickHero")]
     public class ScriptablePickHero : ScriptableObject {
 
-        public Hero SelectHero;
+        public Hero SelectHero=null;
     }
 }
