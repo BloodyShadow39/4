@@ -7,27 +7,27 @@ namespace Game{
     public class MapCreator : MonoBehaviour
     {
         /// <summary>
-        /// Указатель единсвенности данного объекта
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         public static MapCreator Instance;
         /// <summary>
-        /// Ссылка на ассет в котором храниться карта
+        /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [SerializeField]
         private ScriptableMap _loadMap;
         /// <summary>
-        /// Объект указывающий пустую клетку с которой можно взаимодействовать
+        /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [SerializeField]
         private Toucher _touchElement;
         /// <summary>
-        /// Объект указывающий непроходимость клетки
+        /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [SerializeField]
         private GameObject _let;
 
         /// <summary>
-        /// Определяет себя как главный генератор карты на текущей сцене
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         private void Awake() {
                 if (Instance != null) {
@@ -36,7 +36,7 @@ namespace Game{
                 Instance = this;
         }
         /// <summary>
-        /// Запускает на момент первого кадра создание карты
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         private void Start(){
             if(_loadMap.map.Count==0)
@@ -45,15 +45,16 @@ namespace Game{
             GenerateMap();
         }
         /// <summary>
-        /// Генерирует карту записанную в ассете
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         public void GenerateMap(){
             bool isCreated;
             for (int i=0;i<_loadMap.map.Count;i++){
                 for(int j=0;j<_loadMap.map[i].Count;j++){
                     isCreated = false;
+                    Debug.Log($"{_loadMap.mapOfObjects[i][j]};{i};{j}");
                     foreach (Transform child in transform) {
-                        if ((child.position.x == i ) && (child.position.z == j)) {
+                        if ((child.position.x == i ) && (child.position.z == j) && (_loadMap.mapOfObjects[i][j]!=_loadMap.GetUseful())) {
                             isCreated = true;
                             break;
                         }
@@ -72,7 +73,7 @@ namespace Game{
             }
         }
         /// <summary>
-        /// Записывает текущую карту в ассет
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         public void FormirateMap(){
             int maxy=0;

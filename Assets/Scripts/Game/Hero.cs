@@ -7,25 +7,25 @@ using Events;
 namespace Game {
     public class Hero : MonoBehaviour {
         /// <summary>
-        /// Точка отслеживающая цель перемещения
+        /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         private Toucher _currentTouch;
         /// <summary>
-        /// Возвращает текущий Toucher
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Toucher
         /// </summary>
-        /// <returns>Возвращает текущий Toucher</returns>
+        /// <returns>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Toucher</returns>
         public Toucher GetToucher() { return _currentTouch; }
         /// <summary>
-        /// Карта перемещения
+        /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [SerializeField]
         private ScriptableMap _map;
         /// <summary>
-        /// Текущий путь до точки
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         public List<Vector2Int> way;
         /// <summary>
-        /// Время необходимое для прохождения 1ой клетки
+        /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         public float time =5;
 
@@ -42,9 +42,9 @@ namespace Game {
         }
 
         /// <summary>
-        /// Устатнавливает точку указатель перемещения
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
-        /// <param name="toucher">Объект регестрирующий нажатие</param>
+        /// <param name="toucher">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</param>
         public void SetTouch(Toucher toucher) {
             _currentTouch = toucher;
             SetWay();
@@ -52,16 +52,16 @@ namespace Game {
 
         #region Move
         /// <summary>
-        /// Перемещает обьект по текущему пути
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         /// </summary>
         public void MoveAllWay() {
             if(!_moveLock)
                 StartCoroutine(MoveCoroutineAllWay());
         }
         /// <summary>
-        /// Корутина для запуска всего перемещения
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
-        /// <returns>Корутина</returns>
+        /// <returns>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</returns>
         private IEnumerator MoveCoroutineAllWay() {
             _moveLock = true;
             /*for (int i = 0; i < way.Count; i++) {
@@ -76,11 +76,11 @@ namespace Game {
             _moveLock = false;
         }
         /// <summary>
-        /// Покадрового передвигает обьект за время t в новую позицию (Vector3) nextPosition 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ t пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (Vector3) nextPosition 
         /// </summary>
-        /// <param name="time">Время выполнения, не может быть отрицательным</param>
-        /// <param name="nextPosition">Следующая позиция</param>
-        /// <returns>Корутина</returns>
+        /// <param name="time">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</param>
+        /// <param name="nextPosition">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</param>
+        /// <returns>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</returns>
         private IEnumerator MoveCoroutine(float time,Vector3 nextPosition) {
             float moveTime = 0f;
             Vector3 firstPosition = transform.position;
@@ -100,9 +100,9 @@ namespace Game {
         #endregion Move
 
         /// <summary>
-        /// Просчитывает текущий путь на текущей карте
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         /// </summary>
-        /// <returns>Лист точек перемещаения</returns>
+        /// <returns>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</returns>
         public List<Vector2Int> SetWay() {
             if (!_moveLock) {
                 int a = (int)transform.position.x;
@@ -122,15 +122,15 @@ namespace Game {
             return way;
         }
 
-        //Ищет пусть по матрице от точки b,c
+        //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ b,c
         #region FindWay
         /// <summary>
-        /// Ищет путь по матрице до точки x, y по карте map
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ x, y пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ map
         /// </summary>
-        /// <param name="x">x координата точки</param>
-        /// <param name="y">y координата точки</param>
-        /// <param name="map">Карта перемещения содержащая иформацию о дистации от 0вевой точки до любой другой (отрицательное значение означает заблокированную клетку)</param>
-        /// <returns>Список точек по которым надо пройти чтобы добраться до точки назначения по текущей карте</returns>
+        /// <param name="x">x пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ</param>
+        /// <param name="y">y пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ</param>
+        /// <param name="map">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 0пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)</param>
+        /// <returns>пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ</returns>
         private List<Vector2Int> findWay(int x, int y, List<List<int>> map) {
             List<Vector2Int> way = new List<Vector2Int>();
             List<List<char>> currentMapOfObjects = _map.mapOfObjects;
@@ -140,18 +140,33 @@ namespace Game {
             return way;
         }
         /// <summary>
-        /// Итерация для поиска точкек перемещения
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
-        /// <param name="x">x координата точки</param>
-        /// <param name="y">y координата точки</param>
-        /// <param name="map">Карта перемещения</param>
-        /// <param name="way">пусть который уже составлен</param>
+        /// <param name="x">x пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ</param>
+        /// <param name="y">y пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ</param>
+        /// <param name="map">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</param>
+        /// <param name="way">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</param>
         /// <returns></returns>
         private List<Vector2Int> findWayIterate(int x, int y, List<List<int>> map, List<Vector2Int> way, List<List<char>> mapOfObjects) {
             List<Vector2Int> currentway = way;
             currentway.Add(new Vector2Int(x, y));
             if (map[x][y] == 0)
                 return currentway;
+
+            if (y - 1 >= 0) {
+                if ((map[x][y - 1] < map[x][y]) && (map[x][y - 1] >= 0) && mapOfObjects[x][y - 1] != _map.GetUseful()) {
+                    currentway = findWayIterate(x, y - 1, map, currentway, mapOfObjects);
+                    return currentway;
+                }
+            }
+
+            if (y + 1 < map[x].Count) {
+                if ((map[x][y + 1] < map[x][y]) && (map[x][y + 1] >= 0) && mapOfObjects[x][y + 1] != _map.GetUseful()) {
+                    currentway = findWayIterate(x, y + 1, map, currentway, mapOfObjects);
+                    return currentway;
+                }
+            }
+
             if (x - 1 >= 0) {
                 if ((map[x - 1][y] < map[x][y]) && (map[x - 1][y] >= 0) && mapOfObjects[x - 1][y] != _map.GetUseful()) {
                     currentway = findWayIterate(x - 1, y, map, currentway, mapOfObjects);
@@ -194,19 +209,9 @@ namespace Game {
                 }
             }
 
-            if (y - 1 >= 0) {
-                if ((map[x][y - 1] < map[x][y]) && (map[x][y - 1] >= 0) && mapOfObjects[x][y - 1] != _map.GetUseful()) {
-                    currentway = findWayIterate(x, y - 1, map, currentway, mapOfObjects);
-                    return currentway;
-                }
-            }
+            
 
-            if (y + 1 < map[x].Count) {
-                if ((map[x][y + 1] < map[x][y]) && (map[x][y + 1] >= 0) && mapOfObjects[x][y + 1] != _map.GetUseful()) {
-                    currentway = findWayIterate(x, y + 1, map, currentway, mapOfObjects);
-                    return currentway;
-                }
-            }
+            
             return currentway;
         }
         #endregion FindWay
