@@ -4,6 +4,7 @@ using UnityEngine;
 using Game;
 using Values;
 
+namespace Game{
 public class UsefullObject : MonoBehaviour
 {
     [SerializeField]
@@ -141,7 +142,8 @@ public class UsefullObject : MonoBehaviour
 
     private void Use(){
         if(_type=="Gold"||_type=="gold"){
-
+            
         }
     }
+}
 }
