@@ -133,8 +133,9 @@ namespace Game {
         /// <returns>Список точек по которым надо пройти чтобы добраться до точки назначения по текущей карте</returns>
         private List<Vector2Int> findWay(int x, int y, List<List<int>> map) {
             List<Vector2Int> way = new List<Vector2Int>();
+            List<List<char>> currentMapOfObjects = _map.mapOfObjects;
             if ((x >= 0) && (x < map.Count) && (y >= 0) && (y < map[x].Count)) {
-                way = findWayIterate(x, y, map, way);
+                way = findWayIterate(x, y, map, way, currentMapOfObjects);
             }
             return way;
         }
@@ -146,63 +147,63 @@ namespace Game {
         /// <param name="map">Карта перемещения</param>
         /// <param name="way">пусть который уже составлен</param>
         /// <returns></returns>
-        private List<Vector2Int> findWayIterate(int x, int y, List<List<int>> map, List<Vector2Int> way) {
+        private List<Vector2Int> findWayIterate(int x, int y, List<List<int>> map, List<Vector2Int> way, List<List<char>> mapOfObjects) {
             List<Vector2Int> currentway = way;
             currentway.Add(new Vector2Int(x, y));
             if (map[x][y] == 0)
                 return currentway;
             if (x - 1 >= 0) {
-                if ((map[x - 1][y] < map[x][y]) && (map[x - 1][y] >= 0)) {
-                    currentway = findWayIterate(x - 1, y, map, currentway);
+                if ((map[x - 1][y] < map[x][y]) && (map[x - 1][y] >= 0) && mapOfObjects[x - 1][y] != _map.GetUseful()) {
+                    currentway = findWayIterate(x - 1, y, map, currentway, mapOfObjects);
                     return currentway;
                 }
 
                 if (y - 1 >= 0) {
-                    if ((map[x - 1][y - 1] < map[x][y]) && (map[x - 1][y - 1] >= 0)) {
-                        currentway = findWayIterate(x - 1, y - 1, map, currentway);
+                    if ((map[x - 1][y - 1] < map[x][y]) && (map[x - 1][y - 1] >= 0) && mapOfObjects[x - 1][y - 1] != _map.GetUseful()) {
+                        currentway = findWayIterate(x - 1, y - 1, map, currentway, mapOfObjects);
                         return currentway;
                     }
                 }
 
                 if (y + 1 < map[x - 1].Count) {
-                    if ((map[x - 1][y + 1] < map[x][y]) && (map[x - 1][y + 1] >= 0)) {
-                        currentway = findWayIterate(x - 1, y + 1, map, currentway);
+                    if ((map[x - 1][y + 1] < map[x][y]) && (map[x - 1][y + 1] >= 0) && mapOfObjects[x - 1][y + 1] != _map.GetUseful()) {
+                        currentway = findWayIterate(x - 1, y + 1, map, currentway, mapOfObjects);
                         return currentway;
                     }
                 }
             }
 
             if (x + 1 < map.Count) {
-                if ((map[x + 1][y] < map[x][y]) && (map[x + 1][y] >= 0)) {
-                    currentway = findWayIterate(x + 1, y, map, currentway);
+                if ((map[x + 1][y] < map[x][y]) && (map[x + 1][y] >= 0) && mapOfObjects[x + 1][y] != _map.GetUseful()) {
+                    currentway = findWayIterate(x + 1, y, map, currentway, mapOfObjects);
                     return currentway;
                 }
 
                 if (y - 1 >= 0) {
-                    if ((map[x + 1][y - 1] < map[x][y]) && (map[x + 1][y - 1] >= 0)) {
-                        currentway = findWayIterate(x + 1, y - 1, map, currentway);
+                    if ((map[x + 1][y - 1] < map[x][y]) && (map[x + 1][y - 1] >= 0) && mapOfObjects[x + 1][y - 1] != _map.GetUseful()) {
+                        currentway = findWayIterate(x + 1, y - 1, map, currentway, mapOfObjects);
                         return currentway;
                     }
                 }
 
                 if (y + 1 < map[x].Count) {
-                    if ((map[x + 1][y + 1] < map[x][y]) && (map[x + 1][y + 1] >= 0)) {
-                        currentway = findWayIterate(x + 1, y + 1, map, currentway);
+                    if ((map[x + 1][y + 1] < map[x][y]) && (map[x + 1][y + 1] >= 0) && mapOfObjects[x + 1][y + 1] != _map.GetUseful()) {
+                        currentway = findWayIterate(x + 1, y + 1, map, currentway, mapOfObjects);
                         return currentway;
                     }
                 }
             }
 
             if (y - 1 >= 0) {
-                if ((map[x][y - 1] < map[x][y]) && (map[x][y - 1] >= 0)) {
-                    currentway = findWayIterate(x, y - 1, map, currentway);
+                if ((map[x][y - 1] < map[x][y]) && (map[x][y - 1] >= 0) && mapOfObjects[x][y - 1] != _map.GetUseful()) {
+                    currentway = findWayIterate(x, y - 1, map, currentway, mapOfObjects);
                     return currentway;
                 }
             }
 
             if (y + 1 < map[x].Count) {
-                if ((map[x][y + 1] < map[x][y]) && (map[x][y - 1] >= 0)) {
-                    currentway = findWayIterate(x, y + 1, map, currentway);
+                if ((map[x][y + 1] < map[x][y]) && (map[x][y + 1] >= 0) && mapOfObjects[x][y + 1] != _map.GetUseful()) {
+                    currentway = findWayIterate(x, y + 1, map, currentway, mapOfObjects);
                     return currentway;
                 }
             }

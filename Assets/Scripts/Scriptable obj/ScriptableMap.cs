@@ -12,6 +12,10 @@ namespace Values {
         /// </summary>
         public List<List<int>> map=new List<List<int>>();
         /// <summary>
+        /// Объекты на карте
+        /// </summary>
+        public List<List<char>> mapOfObjects = new List<List<char>>();
+        /// <summary>
         /// Название проекта
         /// </summary>
         public static string nameOfGame = "4";
@@ -25,6 +29,14 @@ namespace Values {
         /// </summary>
         [SerializeField]
         private char close = 'C';
+        /// <summary>
+        /// Буква указатель используемой ячейки
+        /// </summary>
+        [SerializeField]
+        private char useful = 'U';
+        public char GetUseful() {
+            return useful;
+        }
 
         /// <summary>
         /// Считывает карту из файла в ассет
@@ -42,12 +54,32 @@ namespace Values {
                 if (data[i] == close) {
                     map[map.Count - 1].Add(-1);
                 }
+                if (data[i] == useful) {
+                    map[map.Count - 1].Add(int.MaxValue);
+                }
                 if (data[i] == ';') {
                 map.Add(new List<int>());
                 }
             }
             map.RemoveAt(map.Count - 1);
 
+            mapOfObjects.Add(new List<char>());
+
+            for (int i = 0; i < data.Length; i++) {
+                if (data[i] == empty) {
+                    mapOfObjects[mapOfObjects.Count - 1].Add(empty);
+                }
+                if (data[i] == close) {
+                    mapOfObjects[mapOfObjects.Count - 1].Add(close);
+                }
+                if (data[i] == useful) {
+                    mapOfObjects[mapOfObjects.Count - 1].Add(useful);
+                }
+                if (data[i] == ';') {
+                    mapOfObjects.Add(new List<char>());
+                }
+            }
+            mapOfObjects.RemoveAt(mapOfObjects.Count - 1);
         }
 
         #region Rewrite
