@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game;
 using Values;
+using Events;
 
 namespace Game{
     public class UsefullObject : MonoBehaviour
@@ -14,6 +15,9 @@ namespace Game{
 
         [SerializeField]
         private ScriptableMap _loadMap;
+
+        [SerializeField]
+        private EventDispatcher _changed;
 
         [SerializeField]
         private string _type="";
@@ -149,6 +153,7 @@ namespace Game{
             if(_type=="Gold"||_type=="gold"){
                 _selectedHero.SelectHero.player.gold+=value;
                 _loadMap.mapOfObjects[(int)transform.position.x][(int)transform.position.z] = _loadMap.GetEmpty();
+                _changed.Dispatch();
                 Destroy(gameObject);
             }
         }
