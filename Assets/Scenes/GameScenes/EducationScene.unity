@@ -249,6 +249,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2347019814056225060, guid: 68f1a240a4dda8b45b09a505057cf4de, type: 3}
+      propertyPath: m_Depth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347019814056225060, guid: 68f1a240a4dda8b45b09a505057cf4de, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7160088417620492803, guid: 68f1a240a4dda8b45b09a505057cf4de, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -297,6 +305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule
       objectReference: {fileID: 0}
+    - target: {fileID: 8924223958245459450, guid: 68f1a240a4dda8b45b09a505057cf4de, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b0d510ccc9d7444185f3b00ca908409, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68f1a240a4dda8b45b09a505057cf4de, type: 3}
 --- !u!1001 &404637016
@@ -466,7 +478,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectedHero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
-  _type: 
+  _loadMap: {fileID: 11400000, guid: 0acb6a1c13d2a3c4aa21f37aa5899e70, type: 2}
+  _type: Gold
+  value: 100
 --- !u!1 &1136775478
 GameObject:
   m_ObjectHideFlags: 0
