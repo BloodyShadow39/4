@@ -49,6 +49,8 @@ namespace Game {
         [SerializeField]
         private RenderCamera _renderCamera;
 
+        public RenderCamera RenderCamera() { return _renderCamera; }
+
         /// <summary>
         /// �������������� ����� ��������� �����������
         /// </summary>
