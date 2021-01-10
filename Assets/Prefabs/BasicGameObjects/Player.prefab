@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3465609141984303148}
   - component: {fileID: 6964440715774213764}
+  - component: {fileID: 6150766720406597230}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46,3 +47,17 @@ MonoBehaviour:
   playerName: 
   heroes: []
   gold: 0
+  _playerChanged: {fileID: 6150766720406597230}
+--- !u!114 &6150766720406597230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937748776421403970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05df64a3f3ccb4e289350db0bd92d37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _someEvent: {fileID: 11400000, guid: 5b4468ada28cb4f4d8105b14f5d96631, type: 2}
