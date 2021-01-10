@@ -18,6 +18,18 @@ namespace UI {
         [SerializeField]
         private EventListener _playerChanged;
 
+        [SerializeField]
+        private Text _gold;
+
+        [SerializeField]
+        private Text _day;
+
+        [SerializeField]
+        private Text _week;
+
+        [SerializeField]
+        private Text _mounth;
+
         private void Awake() {
             if (Instance != null) {
                 Destroy(gameObject);
@@ -36,17 +48,31 @@ namespace UI {
             _playerChanged.OnEventHappened -= FillIconsHeroes;
         }
 
+        public void SetTime(int day,int week,int mounth) {
+            _day.text = day.ToString();
+            _week.text = week.ToString();
+            _mounth.text = mounth.ToString();
+        }
+
         private void FillIconsHeroes() {
             
             for(int i = 0; i < _currentPlayer.heroes.Count; i++) {
-                Debug.Log($"{ _heroIcons};{i}");
                 if (_heroIcons.Count > i) {
+                    _heroIcons[i].gameObject.SetActive(true);
                     _heroIcons[i].texture = _currentPlayer.heroes[i].RenderCamera().Render();
                     Debug.Log(true);
                 }
                 else
                     break;
             }
+
+            if (_currentPlayer.heroes.Count < _heroIcons.Count) {
+                for (int i = _currentPlayer.heroes.Count; i < _heroIcons.Count; i++) {
+                    _heroIcons[i].gameObject.SetActive(false);
+                }
+            }
+
+            _gold.text = _currentPlayer.gold.ToString();
         }
 
     }
