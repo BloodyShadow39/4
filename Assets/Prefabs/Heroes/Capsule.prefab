@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2540172496068522722}
   - component: {fileID: 3304357996995019305}
-  - component: {fileID: 7669816114541223952}
   - component: {fileID: 2250713664978734743}
   m_Layer: 0
   m_Name: RenderCameraHero
@@ -76,14 +75,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7669816114541223952
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629586288607356997}
-  m_Enabled: 1
 --- !u!114 &2250713664978734743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +208,7 @@ MonoBehaviour:
   _wayDefenited: {fileID: 277959099030999524}
   _selectHero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   movePoints: 0
+  _renderCamera: {fileID: 2250713664978734743}
 --- !u!114 &277959099030999524
 MonoBehaviour:
   m_ObjectHideFlags: 0
