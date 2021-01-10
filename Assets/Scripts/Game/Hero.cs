@@ -32,8 +32,11 @@ namespace Game {
         private void OnMouseDown() {
             _selectHero.SelectHero = this;
         }
+
         [Range(0,100)]
         public int movePoints=0;
+        [Range(0,100)]
+        public int startPoints = 10;
 
         [SerializeField]
         private RenderCamera _renderCamera;
