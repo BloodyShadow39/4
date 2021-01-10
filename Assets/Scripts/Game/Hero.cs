@@ -128,6 +128,7 @@ namespace Game {
                 List<List<int>> map = _map.matrixMove(a, b);
 
                 List<Vector2Int> invetway = findWay(c, d, map);
+                invetway.RemoveAt(invetway.Count - 1);
                 way.Clear();
                 for (int i = 0; i < invetway.Count; i++) {
                     way.Add(invetway[invetway.Count - 1 - i]);
