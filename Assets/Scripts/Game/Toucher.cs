@@ -7,19 +7,19 @@ using Values;
 namespace Game {
     public class Toucher : MonoBehaviour {
         /// <summary>
-        /// Указатель на издаваемое событие
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [SerializeField]
         private EventDispatcher _pickToucher;
 
         /// <summary>
-        /// Указатель на слышимое событие
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [SerializeField]
         private EventListener _way;
 
         /// <summary>
-        /// Указатель на выбраного героя (ассет)
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)
         /// </summary>
         [SerializeField]
         private ScriptablePickHero _hero;
@@ -28,23 +28,23 @@ namespace Game {
         private GameObject _point;
 
         /// <summary>
-        /// Подписывается на события
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         private void OnEnable() {
             _way.OnEventHappened += SetOnWay;
         }
         /// <summary>
-        /// Отписывается от событий
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         private void OnDisable() {
             _way.OnEventHappened -= SetOnWay;
         }
         /// <summary>
-        /// Фиксирует нажатие на обьект, двойное нажатие на объект приведет к перемещению текущего героя
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         private void OnMouseDown() {
             if (_hero.SelectHero != null) {
-                if (_hero.SelectHero.GetToucher() != this)
+                if (_hero.SelectHero.GetTarget() != new Vector2Int((int)transform.position.x,(int)transform.position.z))
                     _hero.SelectHero.SetTouch(this);
                 else
                     _hero.SelectHero.MoveAllWay();
@@ -59,7 +59,7 @@ namespace Game {
             SetOnWay();
         }
         /// <summary>
-        /// Устанавливает текущий Тачер в состояние - на пути следования и наоборот убирает его из этого состояния
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         public void SetOnWay() {
             if (_hero.SelectHero != null) {
