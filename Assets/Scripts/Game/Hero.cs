@@ -42,6 +42,8 @@ namespace Game {
         private void OnMouseDown() {
             _selectHero.SelectHero = this;
         }
+        [Range(0,100)]
+        public int movePoints=0;
 
         /// <summary>
         /// �������������� ����� ��������� �����������
@@ -76,14 +78,15 @@ namespace Game {
         /// <returns>��������</returns>
         private IEnumerator MoveCoroutineAllWay() {
             _moveLock = true;
-            /*for (int i = 0; i < way.Count; i++) {
-                StartCoroutine(MoveCoroutine(time, new Vector3(way[0].x,transform.position.y,way[0].y)));
-                yield return new WaitForSeconds(time);
-            }*/
-            while (way.Count > 0) {
+            while ((way.Count > 0)&&(movePoints>0)) {
                 StartCoroutine(MoveCoroutine(time, new Vector3(way[0].x, transform.position.y, way[0].y)));
                 yield return new WaitForSeconds(time);
                 way.RemoveAt(0);
+                movePoints-=1;
+                
+            }
+            if(movePoints==0){
+                    Debug.LogWarning("NO Move Points");
             }
             _moveLock = false;
         }
