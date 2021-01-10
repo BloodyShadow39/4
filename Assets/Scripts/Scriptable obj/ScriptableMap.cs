@@ -24,6 +24,9 @@ namespace Values {
         /// </summary>
         [SerializeField]
         private char empty = 'E';
+        public char GetEmpty() {
+            return empty;
+        }
         /// <summary>
         /// Ѕуква указатель непроходимой €чейки
         /// </summary>
