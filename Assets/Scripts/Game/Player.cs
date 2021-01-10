@@ -13,13 +13,5 @@ namespace Game {
 
         public int gold = 0;
 
-        [SerializeField]
-        private EventDispatcher _playerChanged;
-
-        public void SetPlayerCurrent() {
-            GameScreen.Instance._currentPlayer = this;
-            _playerChanged.Dispatch();
-        }
-
     }
 }
