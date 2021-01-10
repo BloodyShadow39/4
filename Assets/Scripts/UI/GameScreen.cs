@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Values;
 using Events;
+using Game;
 
 namespace UI {
     public class GameScreen : MonoBehaviour {
@@ -13,8 +13,7 @@ namespace UI {
         [SerializeField]
         private List<RawImage> _heroIcons;
 
-        [SerializeField]
-        private SelectPlayer _currentPlayer;
+        public Player _currentPlayer;
 
         [SerializeField]
         private EventListener _playerChanged;
@@ -39,10 +38,10 @@ namespace UI {
 
         private void FillIconsHeroes() {
             
-            for(int i = 0; i < _currentPlayer.currentPlayer.heroes.Count; i++) {
+            for(int i = 0; i < _currentPlayer.heroes.Count; i++) {
                 Debug.Log($"{ _heroIcons};{i}");
                 if (_heroIcons.Count > i) {
-                    _heroIcons[i].texture = _currentPlayer.currentPlayer.heroes[i].RenderCamera().Render();
+                    _heroIcons[i].texture = _currentPlayer.heroes[i].RenderCamera().Render();
                     Debug.Log(true);
                 }
                 else
