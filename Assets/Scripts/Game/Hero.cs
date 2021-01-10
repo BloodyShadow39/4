@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Values;
 using Events;
+using Managers;
 
 namespace Game {
     public class Hero : MonoBehaviour {
@@ -44,6 +45,9 @@ namespace Game {
         }
         [Range(0,100)]
         public int movePoints=0;
+
+        [SerializeField]
+        private RenderCamera _renderCamera;
 
         /// <summary>
         /// �������������� ����� ��������� �����������
@@ -129,6 +133,7 @@ namespace Game {
 
                 List<Vector2Int> invetway = findWay(c, d, map);
                 invetway.RemoveAt(invetway.Count - 1);
+
                 way.Clear();
                 for (int i = 0; i < invetway.Count; i++) {
                     way.Add(invetway[invetway.Count - 1 - i]);
