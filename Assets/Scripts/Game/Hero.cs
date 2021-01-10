@@ -7,29 +7,18 @@ using Managers;
 
 namespace Game {
     public class Hero : MonoBehaviour {
-        /// <summary>
-        /// ����� ������������� ���� �����������
-        /// </summary>
+
         private Vector2Int _target;
 
-        public ScriptablePlayer player;
-        /// <summary>
-        /// ���������� ������� Toucher
-        /// </summary>
-        /// <returns>���������� ������� Toucher</returns>
+        public Player player;
+
         public Vector2Int GetTarget() { return _target; }
-        /// <summary>
-        /// ����� �����������
-        /// </summary>
+
         [SerializeField]
         private ScriptableMap _map;
-        /// <summary>
-        /// ������� ���� �� �����
-        /// </summary>
+
         public List<Vector2Int> way;
-        /// <summary>
-        /// ����� ����������� ��� ����������� 1�� ������
-        /// </summary>
+
         public float time =5;
 
         [SerializeField]
@@ -51,10 +40,80 @@ namespace Game {
 
         public RenderCamera RenderCamera() { return _renderCamera; }
 
-        /// <summary>
-        /// �������������� ����� ��������� �����������
-        /// </summary>
-        /// <param name="toucher">������ �������������� �������</param>
+        #region BasicParametrs
+
+        public string gameName = "";
+
+        public string specialization = "";
+
+        public int heroLevel() {
+            return _expToNextLvl * (experiance * (experiance + 1)) / 2;
+        }
+
+        [SerializeField]
+        private int _expToNextLvl = 500;
+
+        [Range(0, 1000000)]
+        public int experiance = 0;
+
+        public int defense = 0;
+
+        public int attack = 0;
+
+        public int luck = 0;
+
+        public int knowledge = 0;
+
+        public int magicPower = 0;
+
+        public int magicResitance = 0;
+
+        public int defenseFromDamage = 0;
+
+        public int closeDistanceDamage = 0;
+
+        public int longDistanceDamage = 0;
+
+        public int morale = 0;
+
+        public int healt = 0;
+
+        public int mane = 0;
+
+        public int localMove = 0;
+
+        public int countOfArrows = 0;
+
+        public string info = "";
+
+        //Лист навыков
+
+        public GameObject head = null;
+
+        public GameObject bib = null;
+
+        public GameObject belt = null;
+
+        public GameObject legs = null;
+
+        public GameObject leftHand = null;
+
+        public GameObject rightHand = null;
+
+        public GameObject ringLeft = null;
+
+        public GameObject ringRight = null;
+
+        public List<GameObject> additionalSlots = new List<GameObject>(5);
+
+        public GameObject forLongAttack = null;
+
+        #endregion BasicParametrs
+
+
+        #region SetTouch
+
+
         public void SetTouch(Toucher toucher) {
             _target = new Vector2Int((int)toucher.transform.position.x,(int)toucher.transform.position.z);
             SetWay();
@@ -70,18 +129,18 @@ namespace Game {
             SetWay();
         }
 
+        #endregion SetTouch
+
+
         #region Move
-        /// <summary>
-        /// ���������� ������ �� �������� ����
-        /// </summary>
+
+
+
         public void MoveAllWay() {
             if(!_moveLock)
                 StartCoroutine(MoveCoroutineAllWay());
         }
-        /// <summary>
-        /// �������� ��� ������� ����� �����������
-        /// </summary>
-        /// <returns>��������</returns>
+
         private IEnumerator MoveCoroutineAllWay() {
             _moveLock = true;
             while ((way.Count > 0)&&(movePoints>0)) {
@@ -96,12 +155,7 @@ namespace Game {
             }
             _moveLock = false;
         }
-        /// <summary>
-        /// ����������� ����������� ������ �� ����� t � ����� ������� (Vector3) nextPosition 
-        /// </summary>
-        /// <param name="time">����� ����������, �� ����� ���� �������������</param>
-        /// <param name="nextPosition">��������� �������</param>
-        /// <returns>��������</returns>
+
         private IEnumerator MoveCoroutine(float time,Vector3 nextPosition) {
             float moveTime = 0f;
             Vector3 firstPosition = transform.position;
@@ -120,10 +174,10 @@ namespace Game {
         }
         #endregion Move
 
-        /// <summary>
-        /// ������������ ������� ���� �� ������� �����
-        /// </summary>
-        /// <returns>���� ����� ������������</returns>
+
+        #region FindWay
+
+
         public List<Vector2Int> SetWay() {
             if (!_moveLock) {
                 int a = (int)transform.position.x;
@@ -145,15 +199,6 @@ namespace Game {
             return way;
         }
 
-        //���� ����� �� ������� �� ����� b,c
-        #region FindWay
-        /// <summary>
-        /// ���� ���� �� ������� �� ����� x, y �� ����� map
-        /// </summary>
-        /// <param name="x">x ���������� �����</param>
-        /// <param name="y">y ���������� �����</param>
-        /// <param name="map">����� ����������� ���������� ��������� � �������� �� 0����� ����� �� ����� ������ (������������� �������� �������� ��������������� ������)</param>
-        /// <returns>������ ����� �� ������� ���� ������ ����� ��������� �� ����� ���������� �� ������� �����</returns>
         private List<Vector2Int> findWay(int x, int y, List<List<int>> map) {
             List<Vector2Int> way = new List<Vector2Int>();
             List<List<char>> currentMapOfObjects = _map.mapOfObjects;
@@ -162,14 +207,7 @@ namespace Game {
             }
             return way;
         }
-        /// <summary>
-        /// �������� ��� ������ ������ �����������
-        /// </summary>
-        /// <param name="x">x ���������� �����</param>
-        /// <param name="y">y ���������� �����</param>
-        /// <param name="map">����� �����������</param>
-        /// <param name="way">����� ������� ��� ���������</param>
-        /// <returns></returns>
+
         private List<Vector2Int> findWayIterate(int x, int y, List<List<int>> map, List<Vector2Int> way, List<List<char>> mapOfObjects) {
             List<Vector2Int> currentway = way;
             currentway.Add(new Vector2Int(x, y));
