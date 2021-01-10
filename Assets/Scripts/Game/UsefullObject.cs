@@ -128,7 +128,7 @@ public class UsefullObject : MonoBehaviour
         ((transform.position.x)-_selectedHero.SelectHero.transform.position.x)+
         ((transform.position.z)-_selectedHero.SelectHero.transform.position.z)*
         ((transform.position.z)-_selectedHero.SelectHero.transform.position.z);
-                if(distance<_distanceForUseful){
+                if(distance<=_distanceForUseful){
                     Use();
                 }
                 else
@@ -145,6 +145,7 @@ public class UsefullObject : MonoBehaviour
     private void Use(){
         if(_type=="Gold"||_type=="gold"){
             _selectedHero.SelectHero.player.gold+=value;
+            Destroy(gameObject);
         }
     }
 }
