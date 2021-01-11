@@ -18,6 +18,12 @@ namespace UI {
         [SerializeField]
         private GameObject _sureMenu;
 
+        [SerializeField]
+        private Button _newGameButton;
+
+        [SerializeField]
+        private GameObject _newGameScreen;
+
         private void SureMenu() {
             _sureMenu.SetActive(true);
         }
@@ -30,10 +36,19 @@ namespace UI {
             _sureMenu.SetActive(false);
         }
 
+        private void ShowNewGameScreen() {
+            _newGameScreen.SetActive(true);
+        }
+
+        public void HideNewGameScreen() {
+            _newGameScreen.SetActive(false);
+        }
+
         private void Awake() {
             _exit.onClick.AddListener(SureMenu);
             _no.onClick.AddListener(NoButton);
             _yes.onClick.AddListener(YesButton);
+            _newGameButton.onClick.AddListener(ShowNewGameScreen);
         }
     }
 }
