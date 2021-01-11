@@ -13,6 +13,7 @@ namespace UI {
         [SerializeField]
         private List<RawImage> _heroIcons;
 
+        [HideInInspector]
         public Player _currentPlayer;
 
         [SerializeField]
