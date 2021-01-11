@@ -61,7 +61,6 @@ namespace UI {
                 if (_heroIcons.Count > i) {
                     _heroIcons[i].gameObject.SetActive(true);
                     _heroIcons[i].texture = _currentPlayer.heroes[i].RenderCamera().Render();
-                    Debug.Log(true);
                 }
                 else
                     break;
