@@ -43,6 +43,16 @@ namespace Game {
         /// ��������� ������� �� ������, ������� ������� �� ������ �������� � ����������� �������� �����
         /// </summary>
         private void OnMouseDown() {
+
+            Ray scrRay = UsefulCamera.Instance.cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            //If we touched NGUI, down allow to move camera and touch to work
+            if (Physics.Raycast(scrRay.origin, scrRay.direction, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("UI"))) {
+                Debug.Log("UI");
+            }
+            else
+
             if (_hero.SelectHero != null) {
                 if (_hero.SelectHero.GetTarget() != new Vector2Int((int)transform.position.x,(int)transform.position.z))
                     _hero.SelectHero.SetTouch(this);
