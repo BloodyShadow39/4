@@ -60,7 +60,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -208,7 +208,37 @@ MonoBehaviour:
   _wayDefenited: {fileID: 277959099030999524}
   _selectHero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   movePoints: 0
+  startPoints: 10
   _renderCamera: {fileID: 2250713664978734743}
+  gameName: 
+  specialization: 
+  _expToNextLvl: 500
+  experiance: 0
+  defense: 0
+  attack: 0
+  luck: 0
+  knowledge: 0
+  magicPower: 0
+  magicResitance: 0
+  defenseFromDamage: 0
+  closeDistanceDamage: 0
+  longDistanceDamage: 0
+  morale: 0
+  healt: 0
+  mane: 0
+  localMove: 0
+  countOfArrows: 0
+  info: 
+  head: {fileID: 0}
+  bib: {fileID: 0}
+  belt: {fileID: 0}
+  legs: {fileID: 0}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
+  ringLeft: {fileID: 0}
+  ringRight: {fileID: 0}
+  additionalSlots: []
+  forLongAttack: {fileID: 0}
 --- !u!114 &277959099030999524
 MonoBehaviour:
   m_ObjectHideFlags: 0
