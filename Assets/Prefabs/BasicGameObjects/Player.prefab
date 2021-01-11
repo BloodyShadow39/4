@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3465609141984303148}
   - component: {fileID: 6964440715774213764}
   - component: {fileID: 6150766720406597230}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,6 @@ MonoBehaviour:
   playerName: 
   heroes: []
   gold: 0
-  _playerChanged: {fileID: 6150766720406597230}
 --- !u!114 &6150766720406597230
 MonoBehaviour:
   m_ObjectHideFlags: 0

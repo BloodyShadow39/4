@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 2887879732593939636}
   - component: {fileID: 2887879732593939637}
   - component: {fileID: 6853549110563684164}
+  - component: {fileID: 2389197270208200764}
   m_Layer: 5
   m_Name: HextStep
   m_TagString: Untagged
@@ -305,6 +306,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _someEvent: {fileID: 11400000, guid: 4f803b220de53214788e9092e1ab7df5, type: 2}
+--- !u!65 &2389197270208200764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2887879732593939635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 82.69, y: 50.47, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.11}
 --- !u!1 &2887879732653383176
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +377,7 @@ Canvas:
   m_GameObject: {fileID: 2887879732653383176}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -427,6 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784291b566a8c3246aff0feece8834dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _thisCanvas: {fileID: 0}
   _heroIcons:
   - {fileID: 8622505807501661588}
   - {fileID: 1929409065096997761}

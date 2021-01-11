@@ -10,9 +10,13 @@ namespace UI {
 
         public static GameScreen Instance;
 
+        [HideInInspector]
+        public Canvas _thisCanvas;
+
         [SerializeField]
         private List<RawImage> _heroIcons;
 
+        [HideInInspector]
         public Player _currentPlayer;
 
         [SerializeField]
@@ -35,9 +39,13 @@ namespace UI {
                 Destroy(gameObject);
                 return;
             }
-
+            
             Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start() {
+            ChangingCamera();
         }
 
         private void OnEnable() {
@@ -46,6 +54,14 @@ namespace UI {
 
         private void OnDisable() {
             _playerChanged.OnEventHappened -= FillIconsHeroes;
+        }
+
+        private void ChangingCamera() {
+            if (!gameObject.TryGetComponent(out _thisCanvas)) {
+                Debug.LogError("Object havent Canvas");
+            }
+            _thisCanvas.worldCamera = UsefulCamera.Instance.cam;
+            _thisCanvas.planeDistance = 1f;
         }
 
         public void SetTime(int day,int week,int mounth) {
@@ -60,7 +76,6 @@ namespace UI {
                 if (_heroIcons.Count > i) {
                     _heroIcons[i].gameObject.SetActive(true);
                     _heroIcons[i].texture = _currentPlayer.heroes[i].RenderCamera().Render();
-                    Debug.Log(true);
                 }
                 else
                     break;
