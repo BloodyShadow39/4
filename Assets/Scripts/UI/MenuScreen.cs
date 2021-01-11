@@ -24,6 +24,12 @@ namespace UI {
         [SerializeField]
         private GameObject _newGameScreen;
 
+        [SerializeField]
+        private GameObject _settingsButton;
+
+        [SerializeField]
+        private GameObject _settingsScreen;
+
         private void SureMenu() {
             _sureMenu.SetActive(true);
         }
@@ -42,6 +48,10 @@ namespace UI {
 
         public void HideNewGameScreen() {
             _newGameScreen.SetActive(false);
+        }
+
+        public void HideSettingsScreen() {
+            _settingsScreen.SetActive(false);
         }
 
         private void Awake() {
