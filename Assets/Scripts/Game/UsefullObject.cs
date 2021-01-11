@@ -4,6 +4,7 @@ using UnityEngine;
 using Game;
 using Values;
 using Events;
+using UI;
 
 namespace Game {
     public class UsefullObject : MonoBehaviour {
@@ -28,6 +29,16 @@ namespace Game {
         private int value;
 
         private void OnMouseDown() {
+            Ray scrRay = UsefulCamera.Instance.cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            //If we touched NGUI, down allow to move camera and touch to work
+            if (Physics.Raycast(scrRay.origin, scrRay.direction, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("UI"))) {
+                Debug.Log("UI");
+            }
+
+            else
+
             if (_selectedHero.SelectHero != null) {
                 int x = -1;
                 int y = -1;
