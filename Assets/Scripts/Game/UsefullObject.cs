@@ -19,8 +19,12 @@ namespace Game{
         [SerializeField]
         private EventDispatcher _changed;
 
+        
+        private enum type { None, Gold, Entity};
+
         [SerializeField]
-        private string _type="";
+        private type _type;
+
         [SerializeField]
         private int value;
 
@@ -150,7 +154,7 @@ namespace Game{
         }
 
         private void Use(){
-            if(_type=="Gold"||_type=="gold"){
+            if(_type==type.Gold){
                 _selectedHero.SelectHero.player.gold+=value;
                 _loadMap.mapOfObjects[(int)transform.position.x][(int)transform.position.z] = _loadMap.GetEmpty();
                 _changed.Dispatch();
