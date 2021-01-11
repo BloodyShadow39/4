@@ -28,7 +28,11 @@ public class FightInspector : Editor {
             _thisInspector.FillEmptyMap();
         }
 
-        if(_thisInspector.map!=null)
+        if (GUILayout.Button("Generate")) {
+            _thisInspector.GenerateMap();
+        }
+
+        if (_thisInspector.map!=null)
             for (int i = 0; i < width; i++) {
                 GUILayout.BeginHorizontal();
                 for (int j = 0; j < height; j++) {
