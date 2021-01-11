@@ -472,41 +472,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2389197270208200764, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732593939634, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732593939634, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732593939634, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732593939634, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732593939634, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732593939634, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2887879732653383176, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
       propertyPath: m_Name
       value: GameScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732653383178, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2887879732653383180, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
       propertyPath: m_Pivot.x
@@ -542,18 +510,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2887879732653383180, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732653383180, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732653383180, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732653383180, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2887879732653383180, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
@@ -603,22 +559,6 @@ PrefabInstance:
     - target: {fileID: 2887879732653383180, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732653383181, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1136775480}
-    - target: {fileID: 2887879732653383181, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732653383181, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2887879732653383181, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
-      propertyPath: m_PlaneDistance
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
@@ -746,7 +686,7 @@ MonoBehaviour:
   _selectedHero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _loadMap: {fileID: 11400000, guid: 0acb6a1c13d2a3c4aa21f37aa5899e70, type: 2}
   _changed: {fileID: 974195260}
-  _type: 0
+  _type: 1
   value: 100
 --- !u!114 &974195260
 MonoBehaviour:
