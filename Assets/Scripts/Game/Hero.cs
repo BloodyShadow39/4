@@ -190,7 +190,7 @@ namespace Game {
                 int d = (int)_target.y;
 
                 List<List<int>> map = _map.matrixMove(a, b);
-                if (map[c][d] == int.MaxValue && map[c][d] < 0) {
+                if (map[c][d] != int.MaxValue && map[c][d] >= 0) {
 
                     List<Vector2Int> invetway = findWay(c, d, map);
                     invetway.RemoveAt(invetway.Count - 1);
