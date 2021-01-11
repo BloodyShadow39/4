@@ -43,6 +43,7 @@ namespace Game {
 
         public RenderCamera RenderCamera() { return _renderCamera; }
 
+
         #region BasicParametrs
 
         public string gameName = "";
@@ -189,13 +190,19 @@ namespace Game {
                 int d = (int)_target.y;
 
                 List<List<int>> map = _map.matrixMove(a, b);
+                if (map[c][d] != int.MaxValue && map[c][d] < 0) {
 
-                List<Vector2Int> invetway = findWay(c, d, map);
-                invetway.RemoveAt(invetway.Count - 1);
+                    List<Vector2Int> invetway = findWay(c, d, map);
+                    invetway.RemoveAt(invetway.Count - 1);
 
-                way.Clear();
-                for (int i = 0; i < invetway.Count; i++) {
-                    way.Add(invetway[invetway.Count - 1 - i]);
+                    way.Clear();
+                    for (int i = 0; i < invetway.Count; i++) {
+                        way.Add(invetway[invetway.Count - 1 - i]);
+                    }
+                }
+                else {
+                    way.Clear();
+                    Debug.LogError("Way cannot found, point cannot be come");
                 }
             }
             _wayDefenited.Dispatch();
