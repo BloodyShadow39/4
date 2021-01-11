@@ -11,7 +11,13 @@ namespace Game {
 
         public List<Hero> heroes;
 
+        public List<UsefullObject> _havingBilfings;
+
         public int gold = 0;
+
+        public int wood = 0;
+
+        public int ore = 0;
 
     }
 }
