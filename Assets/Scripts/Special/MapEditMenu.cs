@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Game;
+using Values;
 
 public class MapEditMenu : EditorWindow
 {
-    public GameObject selectGameObject =null;
+    public Object selectGameObject =null;
 
     private int width = 0;
 
@@ -18,39 +19,53 @@ public class MapEditMenu : EditorWindow
     }
 
     private void OnGUI() {
-        GUILayout.Label("Choose object");
-        selectGameObject = (GameObject)EditorGUILayout.ObjectField("select",selectGameObject, typeof(GameObject),true);
-
-        Figth tmp;
-        if(selectGameObject.TryGetComponent(out tmp)) {
-            if (width != tmp.width) {
-                width = tmp.width;
-                tmp.FillEmptyMap();
-            }
-            if (height != tmp.height) {
-                height = tmp.height;
-                tmp.FillEmptyMap();
-            }
-
-            if (GUILayout.Button("Clear Map")) {
-                tmp.FillEmptyMap();
-            }
-
-            
-
-            if (tmp.map != null)
-                for (int i = 0; i < width; i++) {
-                    GUILayout.BeginHorizontal();
-                    for (int j = 0; j < height; j++) {
-                        tmp.map[i, j] = GUILayout.Toggle(tmp.map[i, j], "");
-                    }
-                    GUILayout.EndHorizontal();
-                }
-
-            tmp.width = EditorGUILayout.IntSlider("width",tmp.width, 0, 40);
-            tmp.height = EditorGUILayout.IntSlider("height",tmp.height, 0, 40);
-        }
         
+        
+        selectGameObject = EditorGUILayout.ObjectField("Select Object", selectGameObject, typeof(Object), true);
+
+        if (selectGameObject != null) {
+            if (selectGameObject.GetType() == typeof(GameObject)) {
+                GameObject gameObject = selectGameObject as GameObject;
+                Figth tmp;
+                if (gameObject.TryGetComponent(out tmp)) {
+                    if (width != tmp.width) {
+                        width = tmp.width;
+                        tmp.FillEmptyMap();
+                    }
+                    if (height != tmp.height) {
+                        height = tmp.height;
+                        tmp.FillEmptyMap();
+                    }
+
+                    if (GUILayout.Button("Clear Map")) {
+                        tmp.FillEmptyMap();
+                    }
+
+
+
+                    if (tmp.map != null)
+                        for (int i = 0; i < width; i++) {
+                            GUILayout.BeginHorizontal();
+                            for (int j = 0; j < height; j++) {
+                                tmp.map[i, j] = GUILayout.Toggle(tmp.map[i, j], "");
+                            }
+                            GUILayout.EndHorizontal();
+                        }
+
+                    tmp.width = EditorGUILayout.IntSlider("width", tmp.width, 0, 40);
+                    tmp.height = EditorGUILayout.IntSlider("height", tmp.height, 0, 40);
+                }
+            }
+            else
+                if (selectGameObject.GetType() == typeof(ScriptableMap)) {
+
+            }
+            else
+                GUILayout.Label("The object has not yet been entered into the working field or does not contain the parameter: map.");
+        }
+        else
+            GUILayout.Label("Choose object");
+
 
     }
 
