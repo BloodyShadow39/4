@@ -7,43 +7,48 @@ using UnityEngine.SceneManagement;
 namespace Values {
     [CreateAssetMenu(fileName = "ScriptableMap")]
     public class ScriptableMap : ScriptableObject {
-        /// <summary>
-        ///  арта перемещени€
-        /// </summary>
+
         public List<List<int>> map=new List<List<int>>();
-        /// <summary>
-        /// ќбъекты на карте
-        /// </summary>
+
         public List<List<char>> mapOfObjects = new List<List<char>>();
-        /// <summary>
-        /// Ќазвание проекта
-        /// </summary>
+
         public static string nameOfGame = "4";
-        /// <summary>
-        /// Ѕуква указатель пустой €чейки
-        /// </summary>
+
+        public enum state { empty, useful, close }
+
+        [Range(0,1000)]
+        public int width;
+
+        [Range(0, 1000)]
+        public int height;
+
+        public state[,] mapStates=null;
+
+        public void FillEmptyMap() {
+            mapStates = new state[width, height];
+            for(int i = 0; i < width; i++) {
+                for(int j = 0; j < height; j++) {
+                    mapStates[i,j] = state.empty;
+                }
+            }
+        }
+
         [SerializeField]
         private char empty = 'E';
         public char GetEmpty() {
             return empty;
         }
-        /// <summary>
-        /// Ѕуква указатель непроходимой €чейки
-        /// </summary>
+
         [SerializeField]
         private char close = 'C';
-        /// <summary>
-        /// Ѕуква указатель используемой €чейки
-        /// </summary>
+
         [SerializeField]
         private char useful = 'U';
         public char GetUseful() {
             return useful;
         }
 
-        /// <summary>
-        /// —читывает карту из файла в ассет
-        /// </summary>
+
         public void ReadMap() {
             string filepath = "Maps/" + SceneManager.GetActiveScene().name;
             TextAsset textAsset = Resources.Load(filepath) as TextAsset;
