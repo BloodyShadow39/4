@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0b2a7f8a964c14791d0edd0a402d20, type: 3}
   m_Name: ScriptableMap
   m_EditorClassIdentifier: 
-  width: 6
-  height: 22
+  width: 187
+  height: 132
   empty: 69
   close: 67
   useful: 85

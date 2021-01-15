@@ -34,18 +34,21 @@ namespace Game {
         }
 
         public void GenerateMap() {
-            foreach(Transform child in transform) {
-                Destroy(child.gameObject);
-            }
-            for(int i = 0; i < width; i++) {
-                for(int j = 0; j < height; j++) {
-                    if (map[i, j]) {
-                        Instantiate(let, transform.position+ new Vector3(i, 0, j), Quaternion.identity, transform);
+            if (Application.isPlaying) {
+                foreach (Transform child in transform) {
+                    Destroy(child.gameObject);
+                }
+                for (int i = 0; i < width; i++) {
+                    for (int j = 0; j < height; j++) {
+                        if (map[i, j]) {
+                            Instantiate(let, transform.position + new Vector3(i, 0, j), Quaternion.identity, transform);
+                        }
+                        else
+                            Instantiate(toucher, transform.position + new Vector3(i, 0, j), Quaternion.identity, transform);
                     }
-                    else
-                        Instantiate(toucher, transform.position + new Vector3(i, 0, j), Quaternion.identity, transform);
                 }
             }
+            else Debug.LogWarning("Generate can be started only on PlayMode");
         } 
 
     }
