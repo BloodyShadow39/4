@@ -22,13 +22,14 @@ namespace Values {
         [Range(0, 1000)]
         public int height;
 
-        public List<List<int>> map = new List<List<int>>();
+        public int[,] map = new int[0,0];
         public state[,] mapSaved=null;
         public Vector3[,] mapPositions = null;//Ќе реализованна€ часть запоминани€ точек
 
         public void FillEmptyMap() {
             
             mapSaved = new state[width, height];
+            map = new int[width, height];
             for(int i = 0; i < width; i++) {
                 for(int j = 0; j < height; j++) {
                     mapSaved[i,j] = state.empty;
@@ -166,93 +167,75 @@ namespace Values {
 
         */
         #region MatrixMove
-        /// <summary>
-        /// ѕросчитывает карту перемещени€ от начальной точки
-        /// </summary>
-        /// <param name="a">x координата</param>
-        /// <param name="b">y координата</param>
-        /// <returns> арта перемещени€ от начальной точки</returns>
-        public List<List<int>> matrixMove(int a, int b) {
-            List<List<int>> currentMap = new List<List<int>>();
-            for(int i = 0; i < map.Count; i++) {
-                currentMap.Add(new List<int>());
-                for(int j = 0; j < map[i].Count; j++) {
-                    currentMap[i].Add(map[i][j]);
-                }
+
+        public int[,] matrixMove(int a, int b) {
+            if ((a >= map.GetLength(0)) || (b >= map.GetLength(1))) {
+                Debug.LogError("Writen Map less when finden point");
+                return new int[0, 0];
             }
-            currentMap[a][b] = 0;
+
+            int[,] currentMap = new int[map.GetLength(0), map.GetLength(1)];
+            currentMap[a,b] = 0;
             currentMap = matrixMoveIterate(a, b, currentMap);
             return currentMap;
         }
-        /// <summary>
-        /// ѕолностью перепосчитывает карту на основании текущей
-        /// </summary>
-        /// <param name="a">x координата текущей точки</param>
-        /// <param name="b">y координата текущей точки</param>
-        /// <param name="map"> арта перемещени€ (начальна€)</param>
-        /// <returns> арта перемещени€ (полна€)</returns>
-        public List<List<int>> matrixMove(int a, int b, List<List<int>> map) {
-            List<List<int>> currentMap = map;
-            currentMap[a][b] = 0;
+
+        public int[,] matrixMove(int a, int b, int[,] map) {
+            int[,] currentMap = map;
+            currentMap[a,b] = 0;
             currentMap = matrixMoveIterate(a, b, map);
             return currentMap;
         }
-        /// <summary>
-        /// ѕроизводит итерацию просчета от текущей точки
-        /// </summary>
-        /// <param name="a">x координата текущей точки</param>
-        /// <param name="b">y координата текущей точки</param>
-        /// <param name="map"> арта перемещени€ (не полна€)</param>
-        /// <returns> арту перемещени€ (не полна€)</returns>
-        private List<List<int>> matrixMoveIterate(int a, int b, List<List<int>> map) {
+
+        private int[,] matrixMoveIterate(int a, int b, int[,] map) {
             if (a - 1 >= 0) {
                 if (b - 1 >= 0) {
-                    if (map[a - 1][b - 1] > map[a][b]) {
-                        map[a - 1][b - 1] = map[a][b] + 1;
+                    if (map[a - 1,b - 1] > map[a,b]) {
+                        map[a - 1,b - 1] = map[a,b] + 1;
                         matrixMoveIterate(a - 1, b - 1, map);
                     }
                 }
-                if (b + 1 < map[a - 1].Count) {
-                    if (map[a - 1][b + 1] > map[a][b]) {
-                        map[a - 1][b + 1] = map[a][b] + 1;
+                if (b + 1 < map.GetLength(1)) {
+                    if (map[a - 1,b + 1] > map[a,b]) {
+                        map[a - 1,b + 1] = map[a,b] + 1;
                         matrixMoveIterate(a - 1, b + 1, map);
                     }
                 }
-                if (map[a - 1][b] > map[a][b]) {
-                    map[a - 1][b] = map[a][b] + 1;
+                if (map[a - 1,b] > map[a,b]) {
+                    map[a - 1,b] = map[a,b] + 1;
                     matrixMoveIterate(a - 1, b, map);
                 }
             }
 
-            if (a + 1 < map.Count) {
-                if (b + 1 < map[a + 1].Count) {
-                    if (map[a + 1][b + 1] > map[a][b]) {
-                        map[a + 1][b + 1] = map[a][b] + 1;
+            if (a + 1 < map.GetLength(0)) {
+                if (b + 1 < map.GetLength(1)) {
+                    if (map[a + 1,b + 1] > map[a,b]) {
+                        map[a + 1,b + 1] = map[a,b] + 1;
                         matrixMoveIterate(a + 1, b + 1, map);
                     }
                 }
                 if (b - 1 >= 0) {
-                    if (map[a + 1][b - 1] > map[a][b]) {
-                        map[a + 1][b - 1] = map[a][b] + 1;
+                    if (map[a + 1,b - 1] > map[a,b]) {
+                        map[a + 1,b - 1] = map[a,b] + 1;
                         matrixMoveIterate(a + 1, b - 1, map);
                     }
                 }
-                if (map[a + 1][b] > map[a][b]) {
-                    map[a + 1][b] = map[a][b] + 1;
+                if (map[a + 1,b] > map[a,b]) {
+                    map[a + 1,b] = map[a,b] + 1;
                     matrixMoveIterate(a + 1, b, map);
                 }
             }
 
             if (b - 1 >= 0) {
-                if (map[a][b - 1] > map[a][b]) {
-                    map[a][b - 1] = map[a][b] + 1;
+                if (map[a,b - 1] > map[a,b]) {
+                    map[a,b - 1] = map[a,b] + 1;
                     matrixMoveIterate(a, b - 1, map);
                 }
             }
 
-            if (b + 1 < map[a].Count) {
-                if (map[a][b + 1] > map[a][b]) {
-                    map[a][b + 1] = map[a][b] + 1;
+            if (b + 1 < map.GetLength(1)) {
+                if (map[a,b + 1] > map[a,b]) {
+                    map[a,b + 1] = map[a,b] + 1;
                     matrixMoveIterate(a, b + 1, map);
                 }
             }

@@ -27,30 +27,34 @@ namespace Game{
 
         public void GenerateMap(){
             bool isCreated;
-            for (int i=0;i<_loadMap.map.Count;i++){
-                for(int j=0;j<_loadMap.map[i].Count;j++){
-                    isCreated = false;
-                    foreach (Transform child in transform) {
-                        Type obj;
-                        if ((child.position.x == i ) && (child.position.z == j) &&(child.gameObject.TryGetComponent(out obj)) &&(obj.type!=ScriptableMap.state.entity)&& (obj.type != ScriptableMap.state.hero)) {
-                            isCreated = true;
-                            break;
+            if (_loadMap.map != null) {
+                for (int i = 0; i < _loadMap.map.GetLength(0); i++) {
+                    for (int j = 0; j < _loadMap.map.GetLength(1); j++) {
+                        isCreated = false;
+                        foreach (Transform child in transform) {
+                            Type obj;
+                            if ((child.position.x == i) && (child.position.z == j) && (child.gameObject.TryGetComponent(out obj)) && (obj.type != ScriptableMap.state.entity) && (obj.type != ScriptableMap.state.hero)) {
+                                isCreated = true;
+                                break;
+                            }
                         }
-                    }
-                    if(!isCreated)
-                        if (_loadMap.mapSaved[i,j]==ScriptableMap.state.empty){
-                        
-                            Toucher tmp=Instantiate(_emptyObject, gameObject.transform);
-                            tmp.gameObject.transform.position=new Vector3(i, -1, j);
-                        }
-                        else if(_loadMap.mapSaved[i, j] == ScriptableMap.state.close) {
-                            GameObject tmp=Instantiate(_closeObject, gameObject.transform);
-                            tmp.gameObject.transform.position=new Vector3(i, 0, j);
-                        }
-                }
-            }
+                        if (!isCreated)
+                            if (_loadMap.mapSaved[i, j] == ScriptableMap.state.empty) {
 
-            Debug.Log($"Map {_loadMap.name} generated.");
+                                Toucher tmp = Instantiate(_emptyObject, gameObject.transform);
+                                tmp.gameObject.transform.position = new Vector3(i, -1, j);
+                            }
+                            else if (_loadMap.mapSaved[i, j] == ScriptableMap.state.close) {
+                                GameObject tmp = Instantiate(_closeObject, gameObject.transform);
+                                tmp.gameObject.transform.position = new Vector3(i, 0, j);
+                            }
+                    }
+                }
+
+                Debug.Log($"Map {_loadMap.name} generated.");
+            }
+            else
+                Debug.Log("Map not created");
         }
 
         public void FormirateMap(){
@@ -71,8 +75,6 @@ namespace Game{
             int maxy=0;
             int maxx=0;
 
-            List<List<int>> map=new List<List<int>>();
-
             
 
             foreach(Transform child in transform){
@@ -83,13 +85,13 @@ namespace Game{
                     maxy=(int)child.position.z;
                 }
             }
+            int[,] map = new int[maxx+1,maxy+1];
 
             ScriptableMap.state[,] mapStates = new ScriptableMap.state[maxx+1, maxy+1];
 
             for(int i=0;i<maxx+1;i++){
-                map.Add(new List<int>());
                 for(int j=0;j<maxy+1;j++){
-                    map[i].Add(int.MaxValue);
+                    map[i, j] = int.MaxValue;
                     mapStates[i, j] = ScriptableMap.state.empty;
                 }
             }
@@ -97,7 +99,7 @@ namespace Game{
             foreach(Transform child in transform){
                 if(!child.gameObject.TryGetComponent(out Type obj)){
                     if (((int)(child.position.x) >= 0) && ((int)(child.position.z) >= 0)) {
-                        map[(int)(child.position.x )][(int)(child.position.z)] = -1;
+                        map[(int)(child.position.x ),(int)(child.position.z)] = -1;
                         mapStates[(int)(child.position.x), (int)(child.position.z)] = obj.type;
                     }
                 }
