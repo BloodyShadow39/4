@@ -10,9 +10,9 @@ namespace Game{
         [SerializeField]
         private ScriptableMap _loadMap;
         [SerializeField]
-        private Toucher _touchElement;
+        private Toucher _emptyObject;
         [SerializeField]
-        private GameObject _let;
+        private GameObject _closeObject;
 
         private void Awake() {
                 if (Instance != null) {
@@ -31,26 +31,43 @@ namespace Game{
                 for(int j=0;j<_loadMap.map[i].Count;j++){
                     isCreated = false;
                     foreach (Transform child in transform) {
-                        if ((child.position.x == i ) && (child.position.z == j) && (_loadMap.mapSaved[i,j]!=ScriptableMap.state.useful)) {
+                        Type obj;
+                        if ((child.position.x == i ) && (child.position.z == j) &&(child.gameObject.TryGetComponent(out obj)) &&(obj.type!=ScriptableMap.state.entity)&& (obj.type != ScriptableMap.state.hero)) {
                             isCreated = true;
                             break;
                         }
                     }
                     if(!isCreated)
-                        if (_loadMap.map[i][j]>=0){
+                        if (_loadMap.mapSaved[i,j]==ScriptableMap.state.empty){
                         
-                            Toucher tmp=Instantiate(_touchElement,gameObject.transform);
-                            tmp.gameObject.transform.position=new Vector3(i, -1,j);
+                            Toucher tmp=Instantiate(_emptyObject, gameObject.transform);
+                            tmp.gameObject.transform.position=new Vector3(i, -1, j);
                         }
-                        else{
-                            GameObject tmp=Instantiate(_let,gameObject.transform);
-                            tmp.gameObject.transform.position=new Vector3(i, 0,j);
+                        else if(_loadMap.mapSaved[i, j] == ScriptableMap.state.close) {
+                            GameObject tmp=Instantiate(_closeObject, gameObject.transform);
+                            tmp.gameObject.transform.position=new Vector3(i, 0, j);
                         }
                 }
             }
+
+            Debug.Log($"Map {_loadMap.name} generated.");
         }
 
         public void FormirateMap(){
+            bool isCorrect = true;
+            foreach (Transform child1 in transform) {
+                foreach (Transform child2 in transform) {
+                    if(child1!=child2)
+                        if((child1.position.x== child2.position.x)&&(child1.position.z == child2.position.z)) {
+                            Debug.LogError($"At ({child1.position.x},{child1.position.z}) position find 2 object, u can save only one object");
+                            isCorrect = false;
+                        }
+                }
+            }
+
+            if (!isCorrect)
+                return;
+
             int maxy=0;
             int maxx=0;
 
@@ -67,7 +84,7 @@ namespace Game{
                 }
             }
 
-            ScriptableMap.state[,] mapStates = new ScriptableMap.state[maxx, maxy];
+            ScriptableMap.state[,] mapStates = new ScriptableMap.state[maxx+1, maxy+1];
 
             for(int i=0;i<maxx+1;i++){
                 map.Add(new List<int>());
@@ -76,6 +93,7 @@ namespace Game{
                     mapStates[i, j] = ScriptableMap.state.empty;
                 }
             }
+
             foreach(Transform child in transform){
                 if(!child.gameObject.TryGetComponent(out Type obj)){
                     if (((int)(child.position.x) >= 0) && ((int)(child.position.z) >= 0)) {
@@ -86,8 +104,14 @@ namespace Game{
             }
 
             _loadMap.map = map;
-            _loadMap.mapSaved = mapStates;
+            if((_loadMap.mapSaved!=null) &&(_loadMap.mapSaved.GetLength(0)==mapStates.GetLength(0)) && (_loadMap.mapSaved.GetLength(1) == mapStates.GetLength(1)))
+             _loadMap.mapSaved = mapStates;
+            else {
+                _loadMap.mapSaved= new ScriptableMap.state[maxx + 1, maxy + 1];
+                _loadMap.mapSaved = mapStates;
+            }
 
+            Debug.Log($"Map {_loadMap.name} rewrited.");
         }
 
     }

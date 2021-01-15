@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 417338746981373560}
   - component: {fileID: 7586427799224743555}
+  - component: {fileID: 5278343343987418169}
   m_Layer: 0
   m_Name: Entity
   m_TagString: Untagged
@@ -139,3 +140,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6f6234594e1aa4ca223859bae6c45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discription: 
+  distanceAttack: 1
+  heath: 100
+  mindamage: 1
+  maxdamage: 2
+  costOfGold: 0
+  costOfOther: 0
+  units: 1
+  movePoints: 0
+  localMovePoints: 0
+  manaPoints: 0
+  countOfArrows: 0
+  expirianceOfOnceUnit: 0
+  ability: 
+--- !u!114 &5278343343987418169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7184308290926369538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d03e332fdbb8f42b326a0fe0c441d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 4

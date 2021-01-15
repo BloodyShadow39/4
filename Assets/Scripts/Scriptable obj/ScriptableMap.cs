@@ -14,7 +14,7 @@ namespace Values {
 
         public static string nameOfGame = "4";
 
-        public enum state { empty, useful, close}
+        public enum state {empty, useful, close, hero, entity}
 
         [Range(0,1000)]
         public int width;
@@ -24,8 +24,10 @@ namespace Values {
 
         public List<List<int>> map = new List<List<int>>();
         public state[,] mapSaved=null;
+        public Vector3[,] mapPositions = null;//Не реализованная часть запоминания точек
 
         public void FillEmptyMap() {
+            
             mapSaved = new state[width, height];
             for(int i = 0; i < width; i++) {
                 for(int j = 0; j < height; j++) {

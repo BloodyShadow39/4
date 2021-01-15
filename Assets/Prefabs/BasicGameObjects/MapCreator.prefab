@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadMap: {fileID: 11400000, guid: 0acb6a1c13d2a3c4aa21f37aa5899e70, type: 2}
-  _touchElement: {fileID: 6208372241637404891, guid: 641629d05c6539948a403f12b2439d93, type: 3}
-  _let: {fileID: 853148606493015969, guid: b84d9f0147ebe92438781e866637879e, type: 3}
+  _emptyObject: {fileID: 6208372241637404891, guid: 641629d05c6539948a403f12b2439d93, type: 3}
+  _closeObject: {fileID: 853148606493015969, guid: b84d9f0147ebe92438781e866637879e, type: 3}

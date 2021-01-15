@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 6208372241637404891}
   - component: {fileID: -1289757378957581256}
   - component: {fileID: -8251567437080945100}
+  - component: {fileID: 3627889649040589899}
   m_Layer: 0
   m_Name: Touch
   m_TagString: Untagged
@@ -236,3 +237,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _someEvent: {fileID: 11400000, guid: 25b3651e0d256dd4a8240d567f4ca2b2, type: 2}
+--- !u!114 &3627889649040589899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164868766499008435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d03e332fdbb8f42b326a0fe0c441d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
