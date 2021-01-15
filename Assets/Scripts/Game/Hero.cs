@@ -211,70 +211,70 @@ namespace Game {
 
         private List<Vector2Int> findWay(int x, int y, List<List<int>> map) {
             List<Vector2Int> way = new List<Vector2Int>();
-            List<List<char>> currentMapOfObjects = _map.mapOfObjects;
+            ScriptableMap.state[,] mapStates = _map.mapSaved;
             if ((x >= 0) && (x < map.Count) && (y >= 0) && (y < map[x].Count)) {
-                way = findWayIterate(x, y, map, way, currentMapOfObjects);
+                way = findWayIterate(x, y, map, way, mapStates);
             }
             return way;
         }
 
-        private List<Vector2Int> findWayIterate(int x, int y, List<List<int>> map, List<Vector2Int> way, List<List<char>> mapOfObjects) {
+        private List<Vector2Int> findWayIterate(int x, int y, List<List<int>> map, List<Vector2Int> way, ScriptableMap.state[,] mapStates) {
             List<Vector2Int> currentway = way;
             currentway.Add(new Vector2Int(x, y));
             if (map[x][y] == 0)
                 return currentway;
 
             if (y - 1 >= 0) {
-                if ((map[x][y - 1] < map[x][y]) && (map[x][y - 1] >= 0) && mapOfObjects[x][y - 1] != _map.GetUseful()) {
-                    currentway = findWayIterate(x, y - 1, map, currentway, mapOfObjects);
+                if ((map[x][y - 1] < map[x][y]) && (map[x][y - 1] >= 0) && mapStates[x,y - 1] != ScriptableMap.state.useful) {
+                    currentway = findWayIterate(x, y - 1, map, currentway, mapStates);
                     return currentway;
                 }
             }
 
             if (y + 1 < map[x].Count) {
-                if ((map[x][y + 1] < map[x][y]) && (map[x][y + 1] >= 0) && mapOfObjects[x][y + 1] != _map.GetUseful()) {
-                    currentway = findWayIterate(x, y + 1, map, currentway, mapOfObjects);
+                if ((map[x][y + 1] < map[x][y]) && (map[x][y + 1] >= 0) && mapStates[x,y + 1] != ScriptableMap.state.useful) {
+                    currentway = findWayIterate(x, y + 1, map, currentway, mapStates);
                     return currentway;
                 }
             }
 
             if (x - 1 >= 0) {
-                if ((map[x - 1][y] < map[x][y]) && (map[x - 1][y] >= 0) && mapOfObjects[x - 1][y] != _map.GetUseful()) {
-                    currentway = findWayIterate(x - 1, y, map, currentway, mapOfObjects);
+                if ((map[x - 1][y] < map[x][y]) && (map[x - 1][y] >= 0) && mapStates[x - 1,y] != ScriptableMap.state.useful) {
+                    currentway = findWayIterate(x - 1, y, map, currentway, mapStates);
                     return currentway;
                 }
 
                 if (y - 1 >= 0) {
-                    if ((map[x - 1][y - 1] < map[x][y]) && (map[x - 1][y - 1] >= 0) && mapOfObjects[x - 1][y - 1] != _map.GetUseful()) {
-                        currentway = findWayIterate(x - 1, y - 1, map, currentway, mapOfObjects);
+                    if ((map[x - 1][y - 1] < map[x][y]) && (map[x - 1][y - 1] >= 0) && mapStates[x - 1,y - 1] != ScriptableMap.state.useful) {
+                        currentway = findWayIterate(x - 1, y - 1, map, currentway, mapStates);
                         return currentway;
                     }
                 }
 
                 if (y + 1 < map[x - 1].Count) {
-                    if ((map[x - 1][y + 1] < map[x][y]) && (map[x - 1][y + 1] >= 0) && mapOfObjects[x - 1][y + 1] != _map.GetUseful()) {
-                        currentway = findWayIterate(x - 1, y + 1, map, currentway, mapOfObjects);
+                    if ((map[x - 1][y + 1] < map[x][y]) && (map[x - 1][y + 1] >= 0) && mapStates[x - 1,y + 1] != ScriptableMap.state.useful) {
+                        currentway = findWayIterate(x - 1, y + 1, map, currentway, mapStates);
                         return currentway;
                     }
                 }
             }
 
             if (x + 1 < map.Count) {
-                if ((map[x + 1][y] < map[x][y]) && (map[x + 1][y] >= 0) && mapOfObjects[x + 1][y] != _map.GetUseful()) {
-                    currentway = findWayIterate(x + 1, y, map, currentway, mapOfObjects);
+                if ((map[x + 1][y] < map[x][y]) && (map[x + 1][y] >= 0) && mapStates[x + 1,y] != ScriptableMap.state.useful) {
+                    currentway = findWayIterate(x + 1, y, map, currentway, mapStates);
                     return currentway;
                 }
 
                 if (y - 1 >= 0) {
-                    if ((map[x + 1][y - 1] < map[x][y]) && (map[x + 1][y - 1] >= 0) && mapOfObjects[x + 1][y - 1] != _map.GetUseful()) {
-                        currentway = findWayIterate(x + 1, y - 1, map, currentway, mapOfObjects);
+                    if ((map[x + 1][y - 1] < map[x][y]) && (map[x + 1][y - 1] >= 0) && mapStates[x + 1,y - 1] != ScriptableMap.state.useful) {
+                        currentway = findWayIterate(x + 1, y - 1, map, currentway, mapStates);
                         return currentway;
                     }
                 }
 
                 if (y + 1 < map[x].Count) {
-                    if ((map[x + 1][y + 1] < map[x][y]) && (map[x + 1][y + 1] >= 0) && mapOfObjects[x + 1][y + 1] != _map.GetUseful()) {
-                        currentway = findWayIterate(x + 1, y + 1, map, currentway, mapOfObjects);
+                    if ((map[x + 1][y + 1] < map[x][y]) && (map[x + 1][y + 1] >= 0) && mapStates[x + 1,y + 1] != ScriptableMap.state.useful) {
+                        currentway = findWayIterate(x + 1, y + 1, map, currentway, mapStates);
                         return currentway;
                     }
                 }

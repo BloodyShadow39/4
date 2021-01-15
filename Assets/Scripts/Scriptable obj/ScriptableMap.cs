@@ -8,13 +8,13 @@ namespace Values {
     [CreateAssetMenu(fileName = "ScriptableMap")]
     public class ScriptableMap : ScriptableObject {
 
-        public List<List<int>> map=new List<List<int>>();
+        
 
-        public List<List<char>> mapOfObjects = new List<List<char>>();
+        //public List<List<char>> mapOfObjects = new List<List<char>>();
 
         public static string nameOfGame = "4";
 
-        public enum state { empty, useful, close }
+        public enum state { empty, useful, close}
 
         [Range(0,1000)]
         public int width;
@@ -22,23 +22,23 @@ namespace Values {
         [Range(0, 1000)]
         public int height;
 
-        public state[,] mapStates=null;
+        public List<List<int>> map = new List<List<int>>();
+        public state[,] mapSaved=null;
 
         public void FillEmptyMap() {
-            mapStates = new state[width, height];
+            mapSaved = new state[width, height];
             for(int i = 0; i < width; i++) {
                 for(int j = 0; j < height; j++) {
-                    mapStates[i,j] = state.empty;
+                    mapSaved[i,j] = state.empty;
                 }
             }
         }
-
+        /*
         [SerializeField]
         private char empty = 'E';
         public char GetEmpty() {
             return empty;
         }
-
         [SerializeField]
         private char close = 'C';
 
@@ -47,8 +47,9 @@ namespace Values {
         public char GetUseful() {
             return useful;
         }
+        */
 
-
+        /*
         public void ReadMap() {
             string filepath = "Maps/" + SceneManager.GetActiveScene().name;
             TextAsset textAsset = Resources.Load(filepath) as TextAsset;
@@ -89,6 +90,9 @@ namespace Values {
             }
             mapOfObjects.RemoveAt(mapOfObjects.Count - 1);
         }
+        */
+        /*
+
 
         #region Rewrite
         /// <summary>
@@ -157,6 +161,8 @@ namespace Values {
 
         #endregion Rewrite
 
+
+        */
         #region MatrixMove
         /// <summary>
         /// Просчитывает карту перемещения от начальной точки

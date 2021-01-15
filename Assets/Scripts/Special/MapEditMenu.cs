@@ -76,7 +76,7 @@ public class MapEditMenu : EditorWindow
                     tmp.FillEmptyMap();
                 }
 
-                if (tmp.mapStates != null) {
+                if (tmp.mapSaved != null) {
                     startWidth=EditorGUILayout.IntSlider("From width",startWidth, 0, (width - countToDisplay<1) ?width:width-countToDisplay);
                     startHeight = EditorGUILayout.IntSlider("From height", startHeight, 0, (height - countToDisplay < 1) ? height : height - countToDisplay);
                     
@@ -91,7 +91,7 @@ public class MapEditMenu : EditorWindow
                         GUILayout.BeginHorizontal();
                         GUILayout.Label($"{i}");
                         for (int j = startHeight; j < ((startHeight+ countToDisplay>height)?height: startHeight + countToDisplay); j++) {
-                            tmp.mapStates[i, j] = (ScriptableMap.state)EditorGUILayout.EnumPopup(tmp.mapStates[i, j]);
+                            tmp.mapSaved[i, j] = (ScriptableMap.state)EditorGUILayout.EnumPopup(tmp.mapSaved[i, j]);
                         }
                         GUILayout.EndHorizontal();
                     }

@@ -43,7 +43,7 @@ namespace Game {
                 int x = -1;
                 int y = -1;
                 float distance = float.MaxValue;
-                if (_loadMap.mapOfObjects[(int)transform.position.x - 1][(int)transform.position.z - 1] != _loadMap.GetEmpty())
+                if (_loadMap.mapSaved[(int)transform.position.x - 1,(int)transform.position.z - 1] != ScriptableMap.state.empty)
                     distance =
                     ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
                     ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) +
@@ -55,7 +55,7 @@ namespace Game {
                 ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                _loadMap.mapOfObjects[(int)transform.position.x - 1][(int)transform.position.z] != _loadMap.GetEmpty()
+                _loadMap.mapSaved[(int)transform.position.x - 1,(int)transform.position.z] != ScriptableMap.state.empty
                 ) {
                     distance =
                     ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
@@ -71,7 +71,7 @@ namespace Game {
                 ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                _loadMap.mapOfObjects[(int)transform.position.x][(int)transform.position.z - 1] != _loadMap.GetEmpty()
+                _loadMap.mapSaved[(int)transform.position.x,(int)transform.position.z - 1] != ScriptableMap.state.empty
                 ) {
                     distance =
                     ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) *
@@ -87,7 +87,7 @@ namespace Game {
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                _loadMap.mapOfObjects[(int)transform.position.x][(int)transform.position.z + 1] != _loadMap.GetEmpty()
+                _loadMap. mapSaved[(int)transform.position.x,(int)transform.position.z + 1] != ScriptableMap.state.empty
                 ) {
                     distance =
                     ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) *
@@ -103,7 +103,7 @@ namespace Game {
                 ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                _loadMap.mapOfObjects[(int)transform.position.x + 1][(int)transform.position.z] != _loadMap.GetEmpty()
+                _loadMap.mapSaved[(int)transform.position.x + 1,(int)transform.position.z] != ScriptableMap.state.empty
                 ) {
                     distance =
                     ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
@@ -118,7 +118,7 @@ namespace Game {
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                _loadMap.mapOfObjects[(int)transform.position.x + 1][(int)transform.position.z + 1] != _loadMap.GetEmpty()
+                _loadMap.mapSaved[(int)transform.position.x + 1,(int)transform.position.z + 1] != ScriptableMap.state.empty
                 ) {
                     distance =
                     ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
@@ -133,7 +133,7 @@ namespace Game {
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                _loadMap.mapOfObjects[(int)transform.position.x - 1][(int)transform.position.z + 1] != _loadMap.GetEmpty()
+                _loadMap.mapSaved[(int)transform.position.x - 1,(int)transform.position.z + 1] != ScriptableMap.state.empty
                 ) {
                     distance =
                     ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
@@ -148,7 +148,7 @@ namespace Game {
                 ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                _loadMap.mapOfObjects[(int)transform.position.x + 1][(int)transform.position.z - 1] != _loadMap.GetEmpty()
+                _loadMap.mapSaved[(int)transform.position.x + 1,(int)transform.position.z - 1] != ScriptableMap.state.empty
                 ) {
                     x = 1;
                     y = -1;
@@ -175,7 +175,7 @@ namespace Game {
         private void Use() {
             if (_type == type.Gold) {
                 _selectedHero.SelectHero.player.gold += value;
-                _loadMap.mapOfObjects[(int)transform.position.x][(int)transform.position.z] = _loadMap.GetEmpty();
+                _loadMap.mapSaved[(int)transform.position.x,(int)transform.position.z] = ScriptableMap.state.empty;
                 _changed.Dispatch();
                 Destroy(gameObject);
             }
