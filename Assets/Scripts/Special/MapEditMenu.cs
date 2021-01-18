@@ -59,45 +59,6 @@ public class MapEditMenu : EditorWindow
                 }
             }
             else
-            if (selectGameObject.GetType() == typeof(ScriptableMap)) {
-                ScriptableMap tmp = selectGameObject as ScriptableMap;
-
-                if (width != tmp.width) {
-                    width = tmp.width;
-                    tmp.FillEmptyMap();
-                }
-
-                if (height != tmp.height) {
-                    height = tmp.height;
-                    tmp.FillEmptyMap();
-                }
-
-                if (GUILayout.Button("Clear Map")) {
-                    tmp.FillEmptyMap();
-                }
-
-                if (tmp.mapSaved != null) {
-                    startWidth=EditorGUILayout.IntSlider("From width",startWidth, 0, (width - countToDisplay<1) ?width:width-countToDisplay);
-                    startHeight = EditorGUILayout.IntSlider("From height", startHeight, 0, (height - countToDisplay < 1) ? height : height - countToDisplay);
-                    
-                    GUILayout.Space(10);
-                    GUILayout.BeginHorizontal();
-                    GUILayout.Label(" ");
-                    for (int j = startHeight; j < ((startHeight + countToDisplay > height) ? height : startHeight + countToDisplay); j++) {
-                        GUILayout.Label($"{j}");
-                    }
-                    GUILayout.EndHorizontal();
-                    for (int i = startWidth; i < ((startWidth + countToDisplay > width) ? width : startWidth + countToDisplay); i++) {
-                        GUILayout.BeginHorizontal();
-                        GUILayout.Label($"{i}");
-                        for (int j = startHeight; j < ((startHeight+ countToDisplay>height)?height: startHeight + countToDisplay); j++) {
-                            tmp.mapSaved[i, j] = (ScriptableMap.state)EditorGUILayout.EnumPopup(tmp.mapSaved[i, j]);
-                        }
-                        GUILayout.EndHorizontal();
-                    }
-                }
-            }
-            else
                 GUILayout.Label("The object has not yet been entered into the working field or does not contain the parameter: map.");
         }
         else

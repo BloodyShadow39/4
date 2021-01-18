@@ -14,9 +14,6 @@ namespace Game {
 
         public Vector2Int GetTarget() { return _target; }
 
-        [SerializeField]
-        private ScriptableMap _map;
-
         public List<Vector2Int> way;
 
         public float time =5;
@@ -189,8 +186,9 @@ namespace Game {
                 int c = (int)_target.x;
                 int d = (int)_target.y;
 
-                int[,] map = _map.matrixMove(a, b);
+                int[,] map = MapCreator.Instance.matrixMove(a, b);
                 if (c<map.GetLength(0)&&(d<map.GetLength(1))) {
+                    
                     if (map[c, d] != int.MaxValue && map[c, d] >= 0) {
 
                         List<Vector2Int> invetway = findWay(c, d, map);
@@ -216,48 +214,48 @@ namespace Game {
 
         private List<Vector2Int> findWay(int x, int y, int[,] map) {
             List<Vector2Int> way = new List<Vector2Int>();
-            ScriptableMap.state[,] mapStates = _map.mapSaved;
+            MapCreator.state[,] mapStates = MapCreator.Instance.mapSaved;
             if ((x >= 0) && (x < map.GetLength(0)) && (y >= 0) && (y < map.GetLength(1))) {
                 way = findWayIterate(x, y, map, way, mapStates);
             }
             return way;
         }
 
-        private List<Vector2Int> findWayIterate(int x, int y, int[,] map, List<Vector2Int> way, ScriptableMap.state[,] mapStates) {
+        private List<Vector2Int> findWayIterate(int x, int y, int[,] map, List<Vector2Int> way, MapCreator.state[,] mapStates) {
             List<Vector2Int> currentway = way;
             currentway.Add(new Vector2Int(x, y));
             if (map[x,y] == 0)
                 return currentway;
 
             if (y - 1 >= 0) {
-                if ((map[x,y - 1] < map[x,y]) && (map[x,y - 1] >= 0) && mapStates[x,y - 1] != ScriptableMap.state.useful) {
+                if ((map[x,y - 1] < map[x,y]) && (map[x,y - 1] >= 0) && mapStates[x,y - 1] != MapCreator.state.useful) {
                     currentway = findWayIterate(x, y - 1, map, currentway, mapStates);
                     return currentway;
                 }
             }
 
             if (y + 1 < map.GetLength(1)) {
-                if ((map[x,y + 1] < map[x,y]) && (map[x,y + 1] >= 0) && mapStates[x,y + 1] != ScriptableMap.state.useful) {
+                if ((map[x,y + 1] < map[x,y]) && (map[x,y + 1] >= 0) && mapStates[x,y + 1] != MapCreator.state.useful) {
                     currentway = findWayIterate(x, y + 1, map, currentway, mapStates);
                     return currentway;
                 }
             }
 
             if (x - 1 >= 0) {
-                if ((map[x - 1,y] < map[x,y]) && (map[x - 1,y] >= 0) && mapStates[x - 1,y] != ScriptableMap.state.useful) {
+                if ((map[x - 1,y] < map[x,y]) && (map[x - 1,y] >= 0) && mapStates[x - 1,y] != MapCreator.state.useful) {
                     currentway = findWayIterate(x - 1, y, map, currentway, mapStates);
                     return currentway;
                 }
 
                 if (y - 1 >= 0) {
-                    if ((map[x - 1,y - 1] < map[x,y]) && (map[x - 1,y - 1] >= 0) && mapStates[x - 1,y - 1] != ScriptableMap.state.useful) {
+                    if ((map[x - 1,y - 1] < map[x,y]) && (map[x - 1,y - 1] >= 0) && mapStates[x - 1,y - 1] != MapCreator.state.useful) {
                         currentway = findWayIterate(x - 1, y - 1, map, currentway, mapStates);
                         return currentway;
                     }
                 }
 
                 if (y + 1 < map.GetLength(1)) {
-                    if ((map[x - 1,y + 1] < map[x,y]) && (map[x - 1,y + 1] >= 0) && mapStates[x - 1,y + 1] != ScriptableMap.state.useful) {
+                    if ((map[x - 1,y + 1] < map[x,y]) && (map[x - 1,y + 1] >= 0) && mapStates[x - 1,y + 1] != MapCreator.state.useful) {
                         currentway = findWayIterate(x - 1, y + 1, map, currentway, mapStates);
                         return currentway;
                     }
@@ -265,20 +263,20 @@ namespace Game {
             }
 
             if (x + 1 < map.GetLength(0)) {
-                if ((map[x + 1,y] < map[x,y]) && (map[x + 1,y] >= 0) && mapStates[x + 1,y] != ScriptableMap.state.useful) {
+                if ((map[x + 1,y] < map[x,y]) && (map[x + 1,y] >= 0) && mapStates[x + 1,y] != MapCreator.state.useful) {
                     currentway = findWayIterate(x + 1, y, map, currentway, mapStates);
                     return currentway;
                 }
 
                 if (y - 1 >= 0) {
-                    if ((map[x + 1,y - 1] < map[x,y]) && (map[x + 1,y - 1] >= 0) && mapStates[x + 1,y - 1] != ScriptableMap.state.useful) {
+                    if ((map[x + 1,y - 1] < map[x,y]) && (map[x + 1,y - 1] >= 0) && mapStates[x + 1,y - 1] != MapCreator.state.useful) {
                         currentway = findWayIterate(x + 1, y - 1, map, currentway, mapStates);
                         return currentway;
                     }
                 }
 
                 if (y + 1 < map.GetLength(1)) {
-                    if ((map[x + 1,y + 1] < map[x,y]) && (map[x + 1,y + 1] >= 0) && mapStates[x + 1,y + 1] != ScriptableMap.state.useful) {
+                    if ((map[x + 1,y + 1] < map[x,y]) && (map[x + 1,y + 1] >= 0) && mapStates[x + 1,y + 1] != MapCreator.state.useful) {
                         currentway = findWayIterate(x + 1, y + 1, map, currentway, mapStates);
                         return currentway;
                     }
