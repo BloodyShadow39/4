@@ -13,11 +13,11 @@ public class MapEditMenu : EditorWindow
 
     private int height = 0;
 
-    private int startWidth = 0;
+    //private int startWidth = 0;
 
-    private int startHeight = 0;
+    //private int startHeight = 0;
 
-    private int countToDisplay = 10;
+    //private int countToDisplay = 10;
 
     [MenuItem("Window/MapEdit")]
     public static void ShowWindow() {
