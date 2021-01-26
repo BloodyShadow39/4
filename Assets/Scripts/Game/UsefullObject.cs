@@ -40,35 +40,39 @@ namespace Game {
                 int x = -1;
                 int y = -1;
                 float distance = float.MaxValue;
-                if (MapCreator.Instance.mapSaved[(int)transform.position.x - 1,(int)transform.position.z - 1] != MapCreator.state.empty)
-                    distance =
-                    ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
-                    ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) +
-                    ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) *
-                    ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z);
-                if (
-                ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
-                ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) +
-                ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
-                ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) < distance
-                &&
-                MapCreator.Instance.mapSaved[(int)transform.position.x - 1,(int)transform.position.z] != MapCreator.state.empty
-                ) {
-                    distance =
-                    ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
-                    ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) +
-                    ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
-                    ((transform.position.z) - _selectedHero.SelectHero.transform.position.z);
-                    x = -1;
-                    y = 0;
-                }
-                if (
+                if(((int)transform.position.x - 1 < MapCreator.Instance.mapSaved.GetLength(0))&& ((int)transform.position.x - 1 >=0) && ((int)transform.position.z - 1 < MapCreator.Instance.mapSaved.GetLength(1)) && ((int)transform.position.z - 1 >= 0))
+                    if (MapCreator.Instance.mapSaved[(int)transform.position.x - 1,(int)transform.position.z - 1] == MapCreator.state.empty)
+                        distance =
+                        ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
+                        ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) +
+                        ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) *
+                        ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z);
+
+                if (((int)transform.position.x - 1 < MapCreator.Instance.mapSaved.GetLength(0)) && ((int)transform.position.x - 1 >= 0) && ((int)transform.position.z< MapCreator.Instance.mapSaved.GetLength(1)) && ((int)transform.position.z >= 0))
+                    if (
+                        ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
+                        ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) +
+                        ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
+                        ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) < distance
+                        &&
+                        MapCreator.Instance.mapSaved[(int)transform.position.x - 1,(int)transform.position.z] == MapCreator.state.empty
+                        ) {
+                            distance =
+                            ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
+                            ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) +
+                            ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
+                            ((transform.position.z) - _selectedHero.SelectHero.transform.position.z);
+                            x = -1;
+                            y = 0;
+                        }
+                if (((int)transform.position.x < MapCreator.Instance.mapSaved.GetLength(0)) && ((int)transform.position.x >= 0) && ((int)transform.position.z - 1 < MapCreator.Instance.mapSaved.GetLength(1)) && ((int)transform.position.z - 1 >= 0))
+                    if (
                 ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) *
                 ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) +
                 ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                MapCreator.Instance.mapSaved[(int)transform.position.x,(int)transform.position.z - 1] != MapCreator.state.empty
+                MapCreator.Instance.mapSaved[(int)transform.position.x,(int)transform.position.z - 1] == MapCreator.state.empty
                 ) {
                     distance =
                     ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) *
@@ -78,13 +82,14 @@ namespace Game {
                     x = 0;
                     y = -1;
                 }
-                if (
+                if (((int)transform.position.x < MapCreator.Instance.mapSaved.GetLength(0)) && ((int)transform.position.x >= 0) && ((int)transform.position.z + 1 < MapCreator.Instance.mapSaved.GetLength(1)) && ((int)transform.position.z + 1 >= 0))
+                    if (
                     ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) *
                 ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) +
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                MapCreator.Instance. mapSaved[(int)transform.position.x,(int)transform.position.z + 1] != MapCreator.state.empty
+                MapCreator.Instance. mapSaved[(int)transform.position.x,(int)transform.position.z + 1] == MapCreator.state.empty
                 ) {
                     distance =
                     ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) *
@@ -94,28 +99,31 @@ namespace Game {
                     x = 0;
                     y = 1;
                 }
-                if (
+                if (((int)transform.position.x + 1 < MapCreator.Instance.mapSaved.GetLength(0)) && ((int)transform.position.x + 1 >= 0) && ((int)transform.position.z < MapCreator.Instance.mapSaved.GetLength(1)) && ((int)transform.position.z >= 0))
+                    if (
                 ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
                 ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) +
                 ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                MapCreator.Instance.mapSaved[(int)transform.position.x + 1,(int)transform.position.z] != MapCreator.state.empty
-                ) {
-                    distance =
-                    ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
-                    ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) +
-                    ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
-                    ((transform.position.z) - _selectedHero.SelectHero.transform.position.z);
-                    x = 1;
-                    y = 0;
-                }
-                if (((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
+                MapCreator.Instance.mapSaved[(int)transform.position.x + 1,(int)transform.position.z] == MapCreator.state.empty
+                    ) {
+                        distance =
+                        ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
+                        ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) +
+                        ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
+                        ((transform.position.z) - _selectedHero.SelectHero.transform.position.z);
+                        x = 1;
+                        y = 0;
+                    }
+
+                if (((int)transform.position.x + 1 < MapCreator.Instance.mapSaved.GetLength(0)) && ((int)transform.position.x + 1 >= 0) && ((int)transform.position.z + 1 < MapCreator.Instance.mapSaved.GetLength(1)) && ((int)transform.position.z + 1 >= 0))
+                    if (((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
                 ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) +
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                MapCreator.Instance.mapSaved[(int)transform.position.x + 1,(int)transform.position.z + 1] != MapCreator.state.empty
+                MapCreator.Instance.mapSaved[(int)transform.position.x + 1,(int)transform.position.z + 1] == MapCreator.state.empty
                 ) {
                     distance =
                     ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
@@ -125,12 +133,13 @@ namespace Game {
                     x = 1;
                     y = 1;
                 }
-                if (((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
+                if (((int)transform.position.x - 1 < MapCreator.Instance.mapSaved.GetLength(0)) && ((int)transform.position.x - 1 >= 0) && ((int)transform.position.z + 1 < MapCreator.Instance.mapSaved.GetLength(1)) && ((int)transform.position.z + 1 >= 0))
+                    if (((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
                 ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) +
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z + 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                MapCreator.Instance.mapSaved[(int)transform.position.x - 1,(int)transform.position.z + 1] != MapCreator.state.empty
+                MapCreator.Instance.mapSaved[(int)transform.position.x - 1,(int)transform.position.z + 1] == MapCreator.state.empty
                 ) {
                     distance =
                     ((transform.position.x - 1) - _selectedHero.SelectHero.transform.position.x) *
@@ -140,20 +149,27 @@ namespace Game {
                     x = -1;
                     y = 1;
                 }
-                if (((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
+                if (((int)transform.position.x + 1 < MapCreator.Instance.mapSaved.GetLength(0)) && ((int)transform.position.x + 1 >= 0) && ((int)transform.position.z - 1 < MapCreator.Instance.mapSaved.GetLength(1)) && ((int)transform.position.z - 1 >= 0))
+                    if (((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) *
                 ((transform.position.x + 1) - _selectedHero.SelectHero.transform.position.x) +
                 ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) *
                 ((transform.position.z - 1) - _selectedHero.SelectHero.transform.position.z) < distance
                 &&
-                MapCreator.Instance.mapSaved[(int)transform.position.x + 1,(int)transform.position.z - 1] != MapCreator.state.empty
+                MapCreator.Instance.mapSaved[(int)transform.position.x + 1,(int)transform.position.z - 1] == MapCreator.state.empty
                 ) {
+                    
                     x = 1;
                     y = -1;
                 }
+                Debug.Log($"{x}-{y}");
+                if (distance == int.MaxValue) {
+                    Debug.LogWarning("Path not find");
+                    return;
+                }
                 distance = ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) *
-                                    ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) +
-                                    ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
-                                    ((transform.position.z) - _selectedHero.SelectHero.transform.position.z);
+                                ((transform.position.x) - _selectedHero.SelectHero.transform.position.x) +
+                                ((transform.position.z) - _selectedHero.SelectHero.transform.position.z) *
+                                ((transform.position.z) - _selectedHero.SelectHero.transform.position.z);
 
                 if (distance <= _distanceForUseful) {
                     Use();
@@ -173,7 +189,8 @@ namespace Game {
             if (_type == type.Gold) {
                 _selectedHero.SelectHero.player.gold += value;
                 MapCreator.Instance.mapSaved[(int)transform.position.x,(int)transform.position.z] = MapCreator.state.empty;
-                _changed.Dispatch();
+                if(_changed.Event!=null)
+                    _changed.Dispatch();
                 Destroy(gameObject);
             }
         }
