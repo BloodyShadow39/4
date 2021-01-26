@@ -67,6 +67,9 @@ namespace Game{
                                 GameObject tmp = Instantiate(_closeObject, gameObject.transform);
                                 tmp.gameObject.transform.position = new Vector3(i, 0, j);
                             }
+                            else if (mapSaved[i, j] == state.useful) {
+                                Debug.LogWarning("Now haven't load useful objects from save, srry)");
+                            }
                     }
                 }
 
@@ -105,11 +108,22 @@ namespace Game{
             bool isCorrect = true;
             foreach (Transform child1 in transform) {
                 foreach (Transform child2 in transform) {
-                    if(child1!=child2)
-                        if((child1.position.x== child2.position.x)&&(child1.position.z == child2.position.z)) {
-                            Debug.LogError($"At ({child1.position.x},{child1.position.z}) position find 2 object, u can save only one object");
+                    if (child1 != child2) {
+                        Type tmp1;
+                        Type tmp2;
+                        if (child1.gameObject.TryGetComponent(out tmp1)) {
+                            if (child2.gameObject.TryGetComponent(out tmp2))
+                                if(tmp1.type!=state.useful&& tmp2.type != state.useful)
+                                if ((child1.position.x == child2.position.x) && (child1.position.z == child2.position.z)) {
+                                    Debug.LogError($"At ({child1.position.x},{child1.position.z}) position find 2 object, u can save only one object");
+                                    isCorrect = false;
+                                }
+                        }
+                        else {
+                            Debug.LogError($"Find object without Type at ({child1.position.x},{child1.position.z})");
                             isCorrect = false;
                         }
+                    }
                 }
             }
 
