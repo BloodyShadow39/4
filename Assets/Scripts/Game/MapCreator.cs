@@ -17,7 +17,7 @@ namespace Game{
 
         public static string nameOfGame = "4";
 
-        public enum state { empty, useful, close, hero, entity }
+        public enum state { empty, useful, close }
 
         private string saveJson;
 
@@ -27,7 +27,7 @@ namespace Game{
         [Range(0, 1000)]
         public int height;
 
-        public int[,] map = null;
+        private int[,] map = null;
         public state[,] mapSaved;
         public Vector3[,] mapPositions = null;//Не реализованная часть запоминания точек
 
@@ -52,7 +52,7 @@ namespace Game{
                         isCreated = false;
                         foreach (Transform child in transform) {
                             Type obj;
-                            if ((child.position.x == i) && (child.position.z == j) && (child.gameObject.TryGetComponent(out obj)) && (obj.type != state.entity) && (obj.type != state.hero)) {
+                            if ((child.position.x == i) && (child.position.z == j) && (child.gameObject.TryGetComponent(out obj))) {
                                 isCreated = true;
                                 break;
                             }
@@ -76,6 +76,31 @@ namespace Game{
                 Debug.Log("Map not created");
         }
 
+        private int FindMaxYChild() {
+            
+            int maxy = 0;
+
+            foreach (Transform child in transform) {
+                if (child.position.z > maxy) {
+                    maxy = (int)child.position.z;
+                }
+            }
+
+            return maxy;
+        }
+        private int FindMaxXChild() {
+
+            int maxx = 0;
+
+            foreach (Transform child in transform) {
+                if (child.position.x > maxx) {
+                    maxx = (int)child.position.x;
+                }
+            }
+
+            return maxx;
+        }
+
         public void FormirateMap(){
             bool isCorrect = true;
             foreach (Transform child1 in transform) {
@@ -91,17 +116,8 @@ namespace Game{
             if (!isCorrect)
                 return;
 
-            int maxy=0;
-            int maxx=0;
-
-            foreach(Transform child in transform){
-                if(child.position.x>maxx){
-                    maxx=(int)child.position.x;
-                }
-                if(child.position.z>maxy){
-                    maxy=(int)child.position.z;
-                }
-            }
+            int maxy= FindMaxYChild();
+            int maxx= FindMaxXChild();
             int[,] map = new int[maxx+1,maxy+1];
 
             mapSaved = new state[maxx+1, maxy+1];
@@ -141,27 +157,33 @@ namespace Game{
         }
 
 
+        private int[,] FilledMap() {
+            int maxy = FindMaxYChild();
+            int maxx = FindMaxXChild();
+            int[,] map = new int[maxx + 1, maxy + 1];
+            foreach (Transform child in transform) {
+                Type type;
+                if(child.gameObject.TryGetComponent(out type)) {
+                    if (type.type == state.close) {
+                        map[(int)child.position.x, (int)child.position.z] = -1;
+                    } else {
+                        map[(int)child.position.x, (int)child.position.z] = int.MaxValue;
+                    }
+                }
+            }
+            return map;
+        }
+
         #region MatrixMove
 
         public int[,] matrixMove(int a, int b) {
-
-            map = new int[mapSaved.GetLength(0), mapSaved.GetLength(1)];
-
-            for (int i = 0; i < mapSaved.GetLength(0); i++) {
-                for (int j = 0; j < mapSaved.GetLength(1); j++)
-                    if (mapSaved[i, j] == state.close)
-                        map[i, j] = -1;
-                    else {
-                        map[i, j] = int.MaxValue;
-                    }
-            }
 
             if ((a >= map.GetLength(0)) || (b >= map.GetLength(1))) {
                 Debug.LogError("Writen Map less when finden point");
                 return new int[0, 0];
             }
 
-            int[,] currentMap = new int[map.GetLength(0), map.GetLength(1)];
+            int[,] currentMap = FilledMap();
             currentMap[a, b] = 0;
             currentMap = matrixMoveIterate(a, b, currentMap);
             return currentMap;
@@ -169,6 +191,10 @@ namespace Game{
 
         public int[,] matrixMove(int a, int b, int[,] map) {
             int[,] currentMap = map;
+            if ((a >= map.GetLength(0)) || (b >= map.GetLength(1))) {
+                Debug.LogError("Writen Map less when finden point");
+                return map;
+            }
             currentMap[a, b] = 0;
             currentMap = matrixMoveIterate(a, b, map);
             return currentMap;
