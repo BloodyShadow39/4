@@ -11,7 +11,7 @@ namespace Game {
         [SerializeField]
         private ScriptablePickHero _selectedHero;
 
-        private float _distanceForUseful = 2f;
+        private float _distanceForUseful = 2f;//sqrded int
 
         [SerializeField]
         private EventDispatcher _changed;
