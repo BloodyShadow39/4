@@ -22,7 +22,10 @@ namespace Game {
         public Type type;
 
         [SerializeField]
-        private int count;
+        private int minCount;
+
+        [SerializeField]
+        private int maxCount;
 
         private void OnMouseDown() {
 
@@ -177,14 +180,14 @@ namespace Game {
 
         private void Use() {
             if (type == Type.Gold) {
-                _selectedHero.SelectHero.player.gold += count;
+                _selectedHero.SelectHero.player.gold += Random.Range(minCount,maxCount);
                 MapCreator.Instance.mapSaved[(int)transform.position.x,(int)transform.position.z] = MapCreator.state.empty;
                 if(_changed.Event!=null)
                     _changed.Dispatch();
                 Destroy(gameObject);
             }
             if (type == Type.Wood) {
-                _selectedHero.SelectHero.player.wood += count;
+                _selectedHero.SelectHero.player.wood += Random.Range(minCount, maxCount);
                 MapCreator.Instance.mapSaved[(int)transform.position.x, (int)transform.position.z] = MapCreator.state.empty;
                 if (_changed.Event != null)
                     _changed.Dispatch();
