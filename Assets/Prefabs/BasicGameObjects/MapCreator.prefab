@@ -47,3 +47,4 @@ MonoBehaviour:
   _closeObject: {fileID: 1201396198152067392, guid: 58efb3249e1eac1479cbee4c3842960f, type: 3}
   width: 0
   height: 0
+  list: {fileID: 11400000, guid: 8ae22dcf4833b314ebd6545887e89a25, type: 2}
