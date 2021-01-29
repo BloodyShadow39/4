@@ -29,7 +29,6 @@ namespace Game{
 
         private int[,] map = null;
         public state[,] mapSaved;
-        public Vector3[,] mapPositions = null;//Не реализованная часть запоминания точек
 
 
         private void Awake() {
@@ -304,6 +303,7 @@ namespace Game{
             public int y;
             public state type;
             
+
             public SaveMap(int i,int j,state t) {
                 x = i;
                 y = j;
