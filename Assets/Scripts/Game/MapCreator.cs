@@ -21,15 +21,15 @@ namespace Game{
 
         private string saveJson;
 
-        [Range(0, 1000)]
+        [Range(0, 100)]
         public int width;
 
-        [Range(0, 1000)]
+        [Range(0, 100)]
         public int height;
 
         private int[,] map = null;
         public state[,] mapSaved;
-        public Vector3[,] mapPositions = null;//Не реализованная часть запоминания точек
+
 
         private void Awake() {
                 if (Instance != null) {
@@ -302,6 +302,7 @@ namespace Game{
             public int x;
             public int y;
             public state type;
+            
 
             public SaveMap(int i,int j,state t) {
                 x = i;
@@ -382,6 +383,46 @@ namespace Game{
         }
 
         #endregion Save
+
+        /// <summary>
+        /// Method set objects at current object at int position at x and z coordinates
+        /// </summary>
+        public void CheckToCurrentPosition() {
+            foreach (Transform child in transform) {
+                child.position = new Vector3(Mathf.Round(child.position.x), child.position.y, Mathf.Round(child.position.z));
+            }
+        }
+
+        public void SetCorrectMapSize() {
+            CheckToCurrentPosition();
+            List<GameObject> ToDestroy=new List<GameObject>();
+            foreach (Transform child in transform) {
+                if (child.position.x > width) {
+                    ToDestroy.Add(child.gameObject);
+                }
+                if (child.position.z > height) {
+                    ToDestroy.Add(child.gameObject);
+                } 
+            }
+            while (ToDestroy.Count > 0) {
+                GameObject tmp = ToDestroy[0];
+                ToDestroy.RemoveAt(0);
+                DestroyImmediate(tmp);
+            }
+            for(int x = 0; x <= width; x++) {
+                for(int z = 0; z <= height; z++) {
+                    bool noObject = true;
+                    foreach (Transform child in transform) {
+                        if (child.position.x == x && child.position.z == z)
+                            noObject = false;
+                    }
+                    if (noObject) {
+                        Instantiate(_emptyObject, new Vector3(x, -1, z), Quaternion.identity, transform);
+                    }
+                }
+            }
+        }
+
 
     }
 }

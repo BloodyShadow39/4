@@ -11,30 +11,20 @@ namespace Game {
         [SerializeField]
         private ScriptablePickHero _selectedHero;
 
-        private float _distanceForUseful = 2f;
+        private float _distanceForUseful = 2f;//sqrded values
 
         [SerializeField]
         private EventDispatcher _changed;
 
-
-        private enum type { None, Gold, Entity };
-
-        [SerializeField]
-        private type _type;
+        public enum Type { None, Gold, Wood, Fight};
 
         [SerializeField]
-        private int value;
+        public Type type;
+
+        [SerializeField]
+        private int count;
 
         private void OnMouseDown() {
-            Ray scrRay = UsefulCamera.Instance.cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            //If we touched NGUI, down allow to move camera and touch to work
-            if (Physics.Raycast(scrRay.origin, scrRay.direction, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("UI"))) {
-                Debug.Log("UI");
-            }
-
-            else
 
             if (_selectedHero.SelectHero != null) {
                 int x = -1;
@@ -186,10 +176,17 @@ namespace Game {
         }
 
         private void Use() {
-            if (_type == type.Gold) {
-                _selectedHero.SelectHero.player.gold += value;
+            if (type == Type.Gold) {
+                _selectedHero.SelectHero.player.gold += count;
                 MapCreator.Instance.mapSaved[(int)transform.position.x,(int)transform.position.z] = MapCreator.state.empty;
                 if(_changed.Event!=null)
+                    _changed.Dispatch();
+                Destroy(gameObject);
+            }
+            if (type == Type.Wood) {
+                _selectedHero.SelectHero.player.wood += count;
+                MapCreator.Instance.mapSaved[(int)transform.position.x, (int)transform.position.z] = MapCreator.state.empty;
+                if (_changed.Event != null)
                     _changed.Dispatch();
                 Destroy(gameObject);
             }
