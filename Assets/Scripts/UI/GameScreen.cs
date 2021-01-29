@@ -60,7 +60,7 @@ namespace UI {
             if (!gameObject.TryGetComponent(out _thisCanvas)) {
                 Debug.LogError("Object havent Canvas");
             }
-            _thisCanvas.worldCamera = UsefulCamera.Instance.cam;
+            
             _thisCanvas.planeDistance = 1f;
         }
 
