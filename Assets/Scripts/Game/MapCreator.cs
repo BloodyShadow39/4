@@ -30,6 +30,29 @@ namespace Game{
         private int[,] map = null;
         public state[,] mapSaved;
 
+        private struct usefulName {
+            public int x;
+            public int y;
+            public string name;
+
+            public usefulName(int dx, int dy, string dname) {
+                x = dx;
+                y = dy;
+                name = dname;
+            }
+        }
+
+        private List<usefulName> _loadUseful;
+
+        public string FindAtPosition(int dx, int dy) {
+            foreach(usefulName name in _loadUseful) {
+                if (name.x == dx && name.y == dy)
+                    return name.name;
+            }
+            return null;
+        }
+
+        public ScriptableListObjects list;
 
         private void Awake() {
                 if (Instance != null) {
@@ -68,7 +91,13 @@ namespace Game{
                                 tmp.gameObject.transform.position = new Vector3(i, 0, j);
                             }
                             else if (mapSaved[i, j] == state.useful) {
-                                Debug.LogWarning("Now haven't load useful objects from save, srry)");
+                                string name = FindAtPosition(i, j);
+                                if (name != null) {
+                                    if (list.FindByName(name) != null) {
+                                        UsefullObject tmp = Instantiate(list.FindByName(name), gameObject.transform);
+                                        tmp.gameObject.transform.position = new Vector3(i, 0, j);
+                                    }
+                                }
                             }
                     }
                 }
@@ -144,7 +173,7 @@ namespace Game{
             }
 
             foreach(Transform child in transform){
-                if(!child.gameObject.TryGetComponent(out Type obj)){
+                if(child.gameObject.TryGetComponent(out Type obj)){
                     if (((int)(child.position.x) >= 0) && ((int)(child.position.z) >= 0)) {
                         map[(int)(child.position.x ),(int)(child.position.z)] = -1;
                         mapSaved[(int)(child.position.x), (int)(child.position.z)] = obj.type;
@@ -186,6 +215,22 @@ namespace Game{
                 }
             }
             return map;
+        }
+
+        /// <summary>
+        /// Find Usefull object at children at x and y positions
+        /// </summary>
+        /// <param name="x">position at X coordinate</param>
+        /// <param name="z">position at Z coordinate</param>
+        /// <returns>Useful object if find at position, null else</returns>
+        private UsefullObject findUseful(int x, int z) {
+            UsefullObject usefull;
+            foreach(Transform child in transform) {
+                if (child.TryGetComponent(out usefull))
+                    if (child.position.x == x && child.position.z == z)
+                        return usefull;
+            }
+            return null;
         }
 
         #region MatrixMove
@@ -302,12 +347,13 @@ namespace Game{
             public int x;
             public int y;
             public state type;
-            
+            public string uniqueKey;
 
-            public SaveMap(int i,int j,state t) {
+            public SaveMap(int i, int j, state t, string uniqKey = "") {
                 x = i;
                 y = j;
                 type = t;
+                uniqueKey = uniqKey;
             }
         }
 
@@ -316,7 +362,15 @@ namespace Game{
 
             for (int i = 0; i < mapSaved.GetLength(0); i++) {
                 for (int j = 0; j < mapSaved.GetLength(1); j++) {
-                    save[i * mapSaved.GetLength(1) + j] = new SaveMap(i,j, mapSaved[i, j]);
+                    if (mapSaved[i, j] != state.useful)
+                        save[i * mapSaved.GetLength(1) + j] = new SaveMap(i, j, mapSaved[i, j]);
+                    else if (findUseful(i, j) != null) {
+                        string name = findUseful(i, j).gameObject.name;
+                        if (name.Contains("(Clone)")) {
+                            name.Remove(name.IndexOf("(Clone)"));
+                        }
+                            save[i * mapSaved.GetLength(1) + j] = new SaveMap(i, j, mapSaved[i, j], name);
+                        }
                 }
             }
             
@@ -363,8 +417,12 @@ namespace Game{
             }
 
             mapSaved = new state[maxx + 1, maxy + 1];
+            _loadUseful = new List<usefulName>();
             for (int i = 0; i < save.Length; i++) {
                 mapSaved[save[i].x, save[i].y] = save[i].type;
+                if (save[i].type == state.useful) {
+                    _loadUseful.Add(new usefulName(save[i].x, save[i].y, save[i].uniqueKey));
+                }
             }
 
             RecleanInt();
