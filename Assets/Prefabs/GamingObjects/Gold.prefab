@@ -49,8 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedHero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _changed: {fileID: 8441685728211061717}
-  _type: 1
-  value: 100
+  type: 1
+  minCount: 0
+  maxCount: 0
 --- !u!114 &761038963931213780
 MonoBehaviour:
   m_ObjectHideFlags: 0
