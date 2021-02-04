@@ -6,52 +6,30 @@ using Values;
 
 namespace Game {
     public class Toucher : MonoBehaviour {
-        /// <summary>
-        /// ��������� �� ���������� �������
-        /// </summary>
+ 
         [SerializeField]
         private EventDispatcher _pickToucher;
 
-        /// <summary>
-        /// ��������� �� �������� �������
-        /// </summary>
         [SerializeField]
         private EventListener _way;
 
-        /// <summary>
-        /// ��������� �� ��������� ����� (�����)
-        /// </summary>
         [SerializeField]
         private ScriptablePickHero _hero;
 
         [SerializeField]
         private GameObject _point;
 
-        /// <summary>
-        /// ������������� �� �������
-        /// </summary>
+        public string owner=null;
+
         private void OnEnable() {
             _way.OnEventHappened += SetOnWay;
         }
-        /// <summary>
-        /// ������������ �� �������
-        /// </summary>
+
         private void OnDisable() {
             _way.OnEventHappened -= SetOnWay;
         }
-        /// <summary>
-        /// ��������� ������� �� ������, ������� ������� �� ������ �������� � ����������� �������� �����
-        /// </summary>
+
         private void OnMouseDown() {
-
-            Ray scrRay = UsefulCamera.Instance.cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            //If we touched NGUI, down allow to move camera and touch to work
-            if (Physics.Raycast(scrRay.origin, scrRay.direction, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("UI"))) {
-                Debug.Log("UI");
-            }
-            else
 
             if (_hero.SelectHero != null) {
                 if (_hero.SelectHero.GetTarget() != new Vector2Int((int)transform.position.x,(int)transform.position.z))
@@ -68,9 +46,7 @@ namespace Game {
         private void Update() {
             SetOnWay();
         }
-        /// <summary>
-        /// ������������� ������� ����� � ��������� - �� ���� ���������� � �������� ������� ��� �� ����� ���������
-        /// </summary>
+
         public void SetOnWay() {
             if (_hero.SelectHero != null) {
                 bool tmp = false;

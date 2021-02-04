@@ -29,6 +29,7 @@ namespace Game{
 
         private int[,] map = null;
         public state[,] mapSaved;
+        public string[,] owners;
 
         private struct usefulName {
             public int x;
@@ -82,9 +83,9 @@ namespace Game{
                         }
                         if (!isCreated)
                             if (mapSaved[i, j] == state.empty) {
-
                                 Toucher tmp = Instantiate(_emptyObject, gameObject.transform);
                                 tmp.gameObject.transform.position = new Vector3(i, -1, j);
+                                tmp.owner = owners[i, j];
                             }
                             else if (mapSaved[i, j] == state.close) {
                                 GameObject tmp = Instantiate(_closeObject, gameObject.transform);
@@ -164,11 +165,14 @@ namespace Game{
             int[,] map = new int[maxx+1,maxy+1];
 
             mapSaved = new state[maxx+1, maxy+1];
+            owners=new string[maxx + 1, maxy + 1];
 
-            for(int i=0;i<maxx+1;i++){
+
+            for (int i=0;i<maxx+1;i++){
                 for(int j=0;j<maxy+1;j++){
                     map[i, j] = int.MaxValue;
                     mapSaved[i, j] = state.empty;
+                    owners[i, j] = "";
                 }
             }
 
@@ -177,6 +181,11 @@ namespace Game{
                     if (((int)(child.position.x) >= 0) && ((int)(child.position.z) >= 0)) {
                         map[(int)(child.position.x ),(int)(child.position.z)] = -1;
                         mapSaved[(int)(child.position.x), (int)(child.position.z)] = obj.type;
+                    }
+                }
+                if (child.gameObject.TryGetComponent(out Toucher toucher)) {
+                    if (((int)(child.position.x) >= 0) && ((int)(child.position.z) >= 0)) {
+                        owners[(int)(child.position.x), (int)(child.position.z)] = toucher.owner;
                     }
                 }
             }
@@ -347,12 +356,14 @@ namespace Game{
             public int x;
             public int y;
             public state type;
+            public string owner;
             public string uniqueKey;
 
-            public SaveMap(int i, int j, state t, string uniqKey = "") {
+            public SaveMap(int i, int j, state t, string uniqKey = "",string ow=null ) {
                 x = i;
                 y = j;
                 type = t;
+                owner = ow;
                 uniqueKey = uniqKey;
             }
         }
@@ -363,13 +374,13 @@ namespace Game{
             for (int i = 0; i < mapSaved.GetLength(0); i++) {
                 for (int j = 0; j < mapSaved.GetLength(1); j++) {
                     if (mapSaved[i, j] != state.useful)
-                        save[i * mapSaved.GetLength(1) + j] = new SaveMap(i, j, mapSaved[i, j]);
+                        save[i * mapSaved.GetLength(1) + j] = new SaveMap(i, j, mapSaved[i, j],"", owners[i, j]);
                     else if (findUseful(i, j) != null) {
                         string name = findUseful(i, j).gameObject.name;
                         if (name.Contains("(Clone)")) {
                             name.Remove(name.IndexOf("(Clone)"));
                         }
-                            save[i * mapSaved.GetLength(1) + j] = new SaveMap(i, j, mapSaved[i, j], name);
+                            save[i * mapSaved.GetLength(1) + j] = new SaveMap(i, j, mapSaved[i, j], name,owners[i,j]);
                         }
                 }
             }
@@ -417,11 +428,15 @@ namespace Game{
             }
 
             mapSaved = new state[maxx + 1, maxy + 1];
+            owners=new string[maxx + 1, maxy + 1];
             _loadUseful = new List<usefulName>();
             for (int i = 0; i < save.Length; i++) {
                 mapSaved[save[i].x, save[i].y] = save[i].type;
                 if (save[i].type == state.useful) {
                     _loadUseful.Add(new usefulName(save[i].x, save[i].y, save[i].uniqueKey));
+                }
+                else if (save[i].type == state.empty) {
+                    owners[save[i].x, save[i].y] = save[i].owner;
                 }
             }
 

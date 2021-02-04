@@ -216,6 +216,7 @@ MonoBehaviour:
   _way: {fileID: 25651644}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 874754407}
+  owner: 
 --- !u!65 &25651647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -656,6 +657,7 @@ MonoBehaviour:
   _way: {fileID: 49735884}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 80984294}
+  owner: 
 --- !u!65 &49735887
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -811,6 +813,7 @@ MonoBehaviour:
   _way: {fileID: 60218570}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 397986081}
+  owner: 
 --- !u!65 &60218573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -966,6 +969,7 @@ MonoBehaviour:
   _way: {fileID: 70045384}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1740763433}
+  owner: 
 --- !u!65 &70045387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1121,6 +1125,7 @@ MonoBehaviour:
   _way: {fileID: 77386007}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1175749803}
+  owner: 
 --- !u!65 &77386010
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1276,6 +1281,7 @@ MonoBehaviour:
   _way: {fileID: 79788074}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2052827579}
+  owner: 
 --- !u!65 &79788077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1526,6 +1532,7 @@ MonoBehaviour:
   _way: {fileID: 93274471}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 576623229}
+  owner: 
 --- !u!65 &93274474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1776,6 +1783,7 @@ MonoBehaviour:
   _way: {fileID: 104055981}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 639133207}
+  owner: 
 --- !u!65 &104055984
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2026,6 +2034,7 @@ MonoBehaviour:
   _way: {fileID: 124295772}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 769483267}
+  owner: 
 --- !u!65 &124295775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2181,6 +2190,7 @@ MonoBehaviour:
   _way: {fileID: 137266185}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1818379291}
+  owner: 
 --- !u!65 &137266188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2402,6 +2412,7 @@ MonoBehaviour:
   _way: {fileID: 184021115}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1046111462}
+  owner: 
 --- !u!65 &184021118
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2652,6 +2663,7 @@ MonoBehaviour:
   _way: {fileID: 218174731}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1433963966}
+  owner: 
 --- !u!65 &218174734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2864,6 +2876,7 @@ MonoBehaviour:
   _way: {fileID: 229905781}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1207835451}
+  owner: 
 --- !u!65 &229905784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3019,6 +3032,7 @@ MonoBehaviour:
   _way: {fileID: 237927737}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 208585702}
+  owner: 
 --- !u!65 &237927740
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3459,6 +3473,7 @@ MonoBehaviour:
   _way: {fileID: 262616234}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1851258433}
+  owner: 
 --- !u!65 &262616237
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3981,6 +3996,7 @@ MonoBehaviour:
   _way: {fileID: 289114523}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1178039644}
+  owner: 
 --- !u!65 &289114526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4136,6 +4152,7 @@ MonoBehaviour:
   _way: {fileID: 301908009}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 745430080}
+  owner: 
 --- !u!65 &301908012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4291,6 +4308,7 @@ MonoBehaviour:
   _way: {fileID: 303619594}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1283547780}
+  owner: 
 --- !u!65 &303619597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4446,6 +4464,7 @@ MonoBehaviour:
   _way: {fileID: 309628478}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 941858093}
+  owner: 
 --- !u!65 &309628481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4601,6 +4620,7 @@ MonoBehaviour:
   _way: {fileID: 312214481}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1837343187}
+  owner: 
 --- !u!65 &312214484
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4756,6 +4776,7 @@ MonoBehaviour:
   _way: {fileID: 318471849}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1813924731}
+  owner: 
 --- !u!65 &318471852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4911,6 +4932,7 @@ MonoBehaviour:
   _way: {fileID: 322221626}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 937342762}
+  owner: 
 --- !u!65 &322221629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5066,6 +5088,7 @@ MonoBehaviour:
   _way: {fileID: 334450557}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 709819203}
+  owner: 
 --- !u!65 &334450560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5221,6 +5244,7 @@ MonoBehaviour:
   _way: {fileID: 335565727}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 254740799}
+  owner: 
 --- !u!65 &335565730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5376,6 +5400,7 @@ MonoBehaviour:
   _way: {fileID: 336706613}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 863495954}
+  owner: 
 --- !u!65 &336706616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5531,6 +5556,7 @@ MonoBehaviour:
   _way: {fileID: 354225417}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 782175185}
+  owner: 
 --- !u!65 &354225420
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5686,6 +5712,7 @@ MonoBehaviour:
   _way: {fileID: 357650198}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 491699366}
+  owner: 
 --- !u!65 &357650201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5841,6 +5868,7 @@ MonoBehaviour:
   _way: {fileID: 359818626}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1865594474}
+  owner: 
 --- !u!65 &359818629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5996,6 +6024,7 @@ MonoBehaviour:
   _way: {fileID: 370177912}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 827283322}
+  owner: 
 --- !u!65 &370177915
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6631,6 +6660,7 @@ MonoBehaviour:
   _way: {fileID: 441395601}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 252251835}
+  owner: 
 --- !u!65 &441395604
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6786,6 +6816,7 @@ MonoBehaviour:
   _way: {fileID: 458850704}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1921072717}
+  owner: 
 --- !u!65 &458850707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6941,6 +6972,7 @@ MonoBehaviour:
   _way: {fileID: 465075475}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1152320445}
+  owner: 
 --- !u!65 &465075478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7096,6 +7128,7 @@ MonoBehaviour:
   _way: {fileID: 465257651}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1848673172}
+  owner: 
 --- !u!65 &465257654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7346,6 +7379,7 @@ MonoBehaviour:
   _way: {fileID: 481849665}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1694177744}
+  owner: 
 --- !u!65 &481849668
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7501,6 +7535,7 @@ MonoBehaviour:
   _way: {fileID: 483448756}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2055968594}
+  owner: 
 --- !u!65 &483448759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7751,6 +7786,7 @@ MonoBehaviour:
   _way: {fileID: 492207692}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 665753976}
+  owner: 
 --- !u!65 &492207695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8001,6 +8037,7 @@ MonoBehaviour:
   _way: {fileID: 520847300}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1931048875}
+  owner: 
 --- !u!65 &520847303
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8156,6 +8193,7 @@ MonoBehaviour:
   _way: {fileID: 521918032}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2026127216}
+  owner: 
 --- !u!65 &521918035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8406,6 +8444,7 @@ MonoBehaviour:
   _way: {fileID: 530619077}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1411638025}
+  owner: 
 --- !u!65 &530619080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8751,6 +8790,7 @@ MonoBehaviour:
   _way: {fileID: 550579249}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1307338378}
+  owner: 
 --- !u!65 &550579252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9001,6 +9041,7 @@ MonoBehaviour:
   _way: {fileID: 569707343}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1750916320}
+  owner: 
 --- !u!65 &569707346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9251,6 +9292,7 @@ MonoBehaviour:
   _way: {fileID: 598629709}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 801602508}
+  owner: 
 --- !u!65 &598629712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9406,6 +9448,7 @@ MonoBehaviour:
   _way: {fileID: 607440318}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1595172826}
+  owner: 
 --- !u!65 &607440321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9751,6 +9794,7 @@ MonoBehaviour:
   _way: {fileID: 614248028}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 284569815}
+  owner: 
 --- !u!65 &614248031
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10001,6 +10045,7 @@ MonoBehaviour:
   _way: {fileID: 644650581}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 808448578}
+  owner: 
 --- !u!65 &644650584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10346,6 +10391,7 @@ MonoBehaviour:
   _way: {fileID: 661135950}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1364188216}
+  owner: 
 --- !u!65 &661135953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10786,6 +10832,7 @@ MonoBehaviour:
   _way: {fileID: 725103729}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 653993467}
+  owner: 
 --- !u!65 &725103732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10941,6 +10988,7 @@ MonoBehaviour:
   _way: {fileID: 735443929}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1590767728}
+  owner: 
 --- !u!65 &735443932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11666,6 +11714,7 @@ MonoBehaviour:
   _way: {fileID: 809168942}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1371877104}
+  owner: 
 --- !u!65 &809168945
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12393,6 +12442,7 @@ MonoBehaviour:
   _way: {fileID: 859962043}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1439453469}
+  owner: 
 --- !u!65 &859962046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12738,6 +12788,7 @@ MonoBehaviour:
   _way: {fileID: 884945733}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 855924943}
+  owner: 
 --- !u!65 &884945736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12988,6 +13039,7 @@ MonoBehaviour:
   _way: {fileID: 890823158}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1684738135}
+  owner: 
 --- !u!65 &890823161
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13333,6 +13385,7 @@ MonoBehaviour:
   _way: {fileID: 907582992}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 613422388}
+  owner: 
 --- !u!65 &907582995
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13678,6 +13731,7 @@ MonoBehaviour:
   _way: {fileID: 933471075}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 476963345}
+  owner: 
 --- !u!65 &933471078
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14129,6 +14183,7 @@ MonoBehaviour:
   _way: {fileID: 954849710}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 926883977}
+  owner: 
 --- !u!65 &954849713
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14284,6 +14339,7 @@ MonoBehaviour:
   _way: {fileID: 959533119}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 37893953}
+  owner: 
 --- !u!65 &959533122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14534,6 +14590,7 @@ MonoBehaviour:
   _way: {fileID: 1040633058}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1877447121}
+  owner: 
 --- !u!65 &1040633061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14784,6 +14841,7 @@ MonoBehaviour:
   _way: {fileID: 1070325973}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 101490354}
+  owner: 
 --- !u!65 &1070325976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14939,6 +14997,7 @@ MonoBehaviour:
   _way: {fileID: 1080249739}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2132388461}
+  owner: 
 --- !u!65 &1080249742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15094,6 +15153,7 @@ MonoBehaviour:
   _way: {fileID: 1099803560}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 887204514}
+  owner: 
 --- !u!65 &1099803563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15249,6 +15309,7 @@ MonoBehaviour:
   _way: {fileID: 1106420613}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2120979746}
+  owner: 
 --- !u!65 &1106420616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15466,6 +15527,7 @@ MonoBehaviour:
   _way: {fileID: 1125093771}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1568840355}
+  owner: 
 --- !u!65 &1125093774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15937,6 +15999,7 @@ MonoBehaviour:
   _way: {fileID: 1161855794}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 662441787}
+  owner: 
 --- !u!65 &1161855797
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16092,6 +16155,7 @@ MonoBehaviour:
   _way: {fileID: 1166496629}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 823723930}
+  owner: 
 --- !u!65 &1166496632
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16432,7 +16496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedHero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _changed: {fileID: 1178998868}
-  type: 0
+  type: 1
   minCount: 0
   maxCount: 0
 --- !u!1 &1198678490
@@ -16528,6 +16592,7 @@ MonoBehaviour:
   _way: {fileID: 1198678493}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1668561279}
+  owner: 
 --- !u!65 &1198678496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16778,6 +16843,7 @@ MonoBehaviour:
   _way: {fileID: 1229514035}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1302271134}
+  owner: 
 --- !u!65 &1229514038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16933,6 +16999,7 @@ MonoBehaviour:
   _way: {fileID: 1235745345}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1137014802}
+  owner: 
 --- !u!65 &1235745348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17088,6 +17155,7 @@ MonoBehaviour:
   _way: {fileID: 1242436660}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1454934722}
+  owner: 
 --- !u!65 &1242436663
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17243,6 +17311,7 @@ MonoBehaviour:
   _way: {fileID: 1243203409}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1302067587}
+  owner: 
 --- !u!65 &1243203412
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17398,6 +17467,7 @@ MonoBehaviour:
   _way: {fileID: 1271043004}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 851554545}
+  owner: 
 --- !u!65 &1271043007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17553,6 +17623,7 @@ MonoBehaviour:
   _way: {fileID: 1278339928}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1872273784}
+  owner: 
 --- !u!65 &1278339931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17993,6 +18064,7 @@ MonoBehaviour:
   _way: {fileID: 1292889738}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1709989127}
+  owner: 
 --- !u!65 &1292889741
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18148,6 +18220,7 @@ MonoBehaviour:
   _way: {fileID: 1294022324}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1424821795}
+  owner: 
 --- !u!65 &1294022327
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18683,6 +18756,7 @@ MonoBehaviour:
   _way: {fileID: 1314456645}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 904051360}
+  owner: 
 --- !u!65 &1314456648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18838,6 +18912,7 @@ MonoBehaviour:
   _way: {fileID: 1319155205}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1908749263}
+  owner: 
 --- !u!65 &1319155208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18993,6 +19068,7 @@ MonoBehaviour:
   _way: {fileID: 1356556269}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 118410089}
+  owner: 
 --- !u!65 &1356556272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19148,6 +19224,7 @@ MonoBehaviour:
   _way: {fileID: 1362140544}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 536435910}
+  owner: 
 --- !u!65 &1362140547
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19303,6 +19380,7 @@ MonoBehaviour:
   _way: {fileID: 1363662168}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 612645784}
+  owner: 
 --- !u!65 &1363662171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19648,6 +19726,7 @@ MonoBehaviour:
   _way: {fileID: 1372840759}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1309395264}
+  owner: 
 --- !u!65 &1372840762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19803,6 +19882,7 @@ MonoBehaviour:
   _way: {fileID: 1399522379}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1939847788}
+  owner: 
 --- !u!65 &1399522382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19958,6 +20038,7 @@ MonoBehaviour:
   _way: {fileID: 1404627502}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 554068065}
+  owner: 
 --- !u!65 &1404627505
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20208,6 +20289,7 @@ MonoBehaviour:
   _way: {fileID: 1419602525}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2140562528}
+  owner: 
 --- !u!65 &1419602528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20458,6 +20540,7 @@ MonoBehaviour:
   _way: {fileID: 1431968222}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2010693328}
+  owner: 
 --- !u!65 &1431968225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21088,6 +21171,7 @@ MonoBehaviour:
   _way: {fileID: 1470694104}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1453534422}
+  owner: 
 --- !u!65 &1470694107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21324,6 +21408,7 @@ MonoBehaviour:
   _way: {fileID: 1505604765}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1633654627}
+  owner: 
 --- !u!65 &1505604768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21479,6 +21564,7 @@ MonoBehaviour:
   _way: {fileID: 1541261468}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1905807849}
+  owner: 
 --- !u!65 &1541261471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21729,6 +21815,7 @@ MonoBehaviour:
   _way: {fileID: 1579040975}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 777505891}
+  owner: 
 --- !u!65 &1579040978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21884,6 +21971,7 @@ MonoBehaviour:
   _way: {fileID: 1582159945}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1926797744}
+  owner: 
 --- !u!65 &1582159948
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22134,6 +22222,7 @@ MonoBehaviour:
   _way: {fileID: 1586652909}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 384851466}
+  owner: 
 --- !u!65 &1586652912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22574,6 +22663,7 @@ MonoBehaviour:
   _way: {fileID: 1656314333}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 280542859}
+  owner: 
 --- !u!65 &1656314336
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22824,6 +22914,7 @@ MonoBehaviour:
   _way: {fileID: 1673829514}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 284049871}
+  owner: 
 --- !u!65 &1673829517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23074,6 +23165,7 @@ MonoBehaviour:
   _way: {fileID: 1685298350}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1838696692}
+  owner: 
 --- !u!65 &1685298353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23419,6 +23511,7 @@ MonoBehaviour:
   _way: {fileID: 1698870754}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1442223502}
+  owner: 
 --- !u!65 &1698870757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23574,6 +23667,7 @@ MonoBehaviour:
   _way: {fileID: 1699717000}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 948229965}
+  owner: 
 --- !u!65 &1699717003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23729,6 +23823,7 @@ MonoBehaviour:
   _way: {fileID: 1705787701}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1750400744}
+  owner: 
 --- !u!65 &1705787704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24074,6 +24169,7 @@ MonoBehaviour:
   _way: {fileID: 1731000910}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2050659287}
+  owner: 
 --- !u!65 &1731000913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24514,6 +24610,7 @@ MonoBehaviour:
   _way: {fileID: 1766070031}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1284015720}
+  owner: 
 --- !u!65 &1766070034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24669,6 +24766,7 @@ MonoBehaviour:
   _way: {fileID: 1778210343}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 541565310}
+  owner: 
 --- !u!65 &1778210346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24824,6 +24922,7 @@ MonoBehaviour:
   _way: {fileID: 1792463914}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2046793427}
+  owner: 
 --- !u!65 &1792463917
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24979,6 +25078,7 @@ MonoBehaviour:
   _way: {fileID: 1795059035}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1728239258}
+  owner: 
 --- !u!65 &1795059038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25415,6 +25515,7 @@ MonoBehaviour:
   _way: {fileID: 1827181307}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 896642854}
+  owner: 
 --- !u!65 &1827181310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25570,6 +25671,7 @@ MonoBehaviour:
   _way: {fileID: 1832843729}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 854827152}
+  owner: 
 --- !u!65 &1832843732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26390,6 +26492,7 @@ MonoBehaviour:
   _way: {fileID: 1886760186}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1912506736}
+  owner: 
 --- !u!65 &1886760189
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26545,6 +26648,7 @@ MonoBehaviour:
   _way: {fileID: 1887220801}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1282289590}
+  owner: 
 --- !u!65 &1887220804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26700,6 +26804,7 @@ MonoBehaviour:
   _way: {fileID: 1887394534}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 30148793}
+  owner: 
 --- !u!65 &1887394537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26950,6 +27055,7 @@ MonoBehaviour:
   _way: {fileID: 1906715447}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 919196051}
+  owner: 
 --- !u!65 &1906715450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27295,6 +27401,7 @@ MonoBehaviour:
   _way: {fileID: 1913200648}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2124032379}
+  owner: 
 --- !u!65 &1913200651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27545,6 +27652,7 @@ MonoBehaviour:
   _way: {fileID: 1926050878}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 413287760}
+  owner: 
 --- !u!65 &1926050881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27890,6 +27998,7 @@ MonoBehaviour:
   _way: {fileID: 1932828584}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1584505873}
+  owner: 
 --- !u!65 &1932828587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28140,6 +28249,7 @@ MonoBehaviour:
   _way: {fileID: 1947877485}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 241503131}
+  owner: 
 --- !u!65 &1947877488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28295,6 +28405,7 @@ MonoBehaviour:
   _way: {fileID: 1999059581}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 29077156}
+  owner: 
 --- !u!65 &1999059584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28450,6 +28561,7 @@ MonoBehaviour:
   _way: {fileID: 2000584570}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 646706646}
+  owner: 
 --- !u!65 &2000584573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28700,6 +28812,7 @@ MonoBehaviour:
   _way: {fileID: 2024511166}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 501739502}
+  owner: 
 --- !u!65 &2024511169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28950,6 +29063,7 @@ MonoBehaviour:
   _way: {fileID: 2027699946}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1029204494}
+  owner: 
 --- !u!65 &2027699949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29105,6 +29219,7 @@ MonoBehaviour:
   _way: {fileID: 2031266937}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 522299255}
+  owner: 
 --- !u!65 &2031266940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29260,6 +29375,7 @@ MonoBehaviour:
   _way: {fileID: 2045709594}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 1691358225}
+  owner: 
 --- !u!65 &2045709597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29700,6 +29816,7 @@ MonoBehaviour:
   _way: {fileID: 2055318201}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2091042433}
+  owner: 
 --- !u!65 &2055318204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30043,6 +30160,7 @@ MonoBehaviour:
   _way: {fileID: 2080996776}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 2084302413}
+  owner: 
 --- !u!65 &2080996779
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30483,6 +30601,7 @@ MonoBehaviour:
   _way: {fileID: 2122313249}
   _hero: {fileID: 11400000, guid: 2cc0167f75f264f4ca475412b78ebb36, type: 2}
   _point: {fileID: 396950854}
+  owner: 
 --- !u!65 &2122313252
 BoxCollider:
   m_ObjectHideFlags: 0
