@@ -16,7 +16,7 @@ namespace Game {
         [SerializeField]
         private EventDispatcher _changed;
 
-        public enum Type { None, Gold, Wood, Fight};
+        public enum Type { None, Gold, Wood, Fight, Settlement};
 
         [SerializeField]
         public Type type;
@@ -26,6 +26,8 @@ namespace Game {
 
         [SerializeField]
         private int maxCount;
+
+        public string owner = "";
 
         private void OnMouseDown() {
 
