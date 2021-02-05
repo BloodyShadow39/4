@@ -12083,6 +12083,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1136775480}
     - target: {fileID: 2887879732653383181, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887879732653383181, guid: 3c256d7f05d3f5b4ab970918d4b458a2, type: 3}
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
@@ -15731,6 +15735,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _updateInputListeners: {fileID: 1136775484}
   _sinsentivity: {fileID: 11400000, guid: a5b85eacfc6c70b48a55b20d3da9a6b3, type: 2}
+  _turnDistance: 10
+  _sinsivityTurn: 0.5
+  _distanceMove: 50
 --- !u!114 &1136775484
 MonoBehaviour:
   m_ObjectHideFlags: 0
